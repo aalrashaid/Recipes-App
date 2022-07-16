@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             CuisinesSeeder::class,
             CategoriesSeeder::class,
             CountriesSeeder::class,
-            GenderSeeder::class,
+            GendersSeeder::class,
             LanguagesSeeder::class
         ]);
 
