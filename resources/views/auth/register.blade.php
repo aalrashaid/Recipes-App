@@ -1,59 +1,34 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.app')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('title', 'Page Title')
 
-        <form method="POST" action="{{ route('register') }}">
+@section('content')
+    {{-- <main class=""> --}}
+        <form method="POST" action="{{ route('register') }}" autocomplete="on">
             @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <div class="form-floating mb-3">
+                <input type="text" name="username" id="username" class="form-control" placeholder="username" required autofocus>
+                <label for="username">username:</label>
             </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="form-floating mb-3">
+                <input type="email" name="email" id="email" class="form-control" placeholder="name@example.com"
+                    required autofocus>
+                <label for="email">Email address</label>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+            <div class="form-floating mb-3">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required
+                    autofocus autocomplete="new-password">
+                <label for="password">Password</label>
             </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+            <div class="form-floating mb-3">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                    placeholder="Password Confirmation" required autofocus>
+                <label for="password_confirmation">Password Confirmation</label>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
+            <div class="mb-3">
+                <a href="{{ route('login') }}">{{ __('Already registered?') }}</a>
             </div>
+            <button type="submit" value="Submit" class="btn btn-dark">{{ __('Register') }}</button>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    {{-- </main> --}}
+@endsection

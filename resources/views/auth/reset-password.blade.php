@@ -1,48 +1,27 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.app')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('title', 'Page Title')
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+@section('content')
+    <form method="POST" action="{{ route('password.update') }}">
+        @csrf
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        <!-- Password Reset Token -->
+        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+        <div class="form-floating mb-3">
+            <input type="email" name="email" id="email" class="form-control" placeholder="name@example.com" required
+                autofocus>
+            <label for="email">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required
+                autofocus autocomplete="new-password">
+            <label for="password">Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                placeholder="Password Confirmation" required autofocus>
+            <label for="password_confirmation">Password Confirmation</label>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-dark">{{ __('Reset Password') }}</button>
+    @endsection

@@ -1,17 +1,20 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.dashboards')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
-                </div>
+@section('title', 'Page Title')
+
+@section('content')
+    <div class="list-group mb-3">
+
+        <h1>Dashboard</h1>
+
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
             </div>
-        </div>
+        @endif
+        <a href="{{ route('Profiles.index') }}" class="list-group-item list-group-item-action">Profile</a>
+        <a href="{{ route('Recipes.index') }}" class="list-group-item list-group-item-action">Recipes</a>
+        {{-- <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a> --}}
     </div>
-</x-app-layout>
+@endsection
