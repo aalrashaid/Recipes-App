@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+//Target  Controller
+use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\ThumbnailsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +33,7 @@ Route::GET('Profile/create',[ProfilesController::class, 'create'])->name('Profil
 Route::POST('Profile/store',[ProfilesController::class, 'store'])->name('Profiles.store');
 Route::GET('Profile/show/{id}',[ProfilesController::class, 'show'])->name('Profiles.show');
 Route::GET('Profile/{id}/edit',[ProfilesController::class, 'edit'])->name('Profiles.edit');
-Route::PATCH('Profile/update',[ProfilesController::class, 'update'])->name('Profiles.update');
+Route::PATCH('Profile/update/{id}',[ProfilesController::class, 'update'])->name('Profiles.update');
 Route::DELETE('Profile/{id}/Destroy',[ProfilesController::class, 'destroy'])->name('Profiles.destroy');
 
 Route::GET('Recipes/index', [RecipesController::class ,'index'])->name('Recipes.index');

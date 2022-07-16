@@ -37,7 +37,7 @@ class CreateProfilesTable extends Migration
             $table->text('bio')->nullable()->comment('foreign key tables users');
             $table->text('quotes')->nullable()->comment('foreign key tables users');
             $table->string('birthday')->nullable()->comment('foreign key tables users');
-            $table->string('gender')->nullable()->comment('foreign key tables users');
+            //$table->string('gender')->nullable()->comment('foreign key tables users');
             $table->string('avatar')->default('user.png')->comment('foreign key tables users');
 
 

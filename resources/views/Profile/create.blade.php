@@ -26,7 +26,7 @@
         @csrf
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Full Name">
+            <input type="text" class="form-control" name="fullName" id="fullName" value="{{old('fullName') }}" placeholder="Full Name">
             <label for="fullName">Full Name:</label>
         </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="birthday" id="birthday" placeholder="birthday">
+            <input type="text" class="form-control" name="birthday" id="birthday" value="{{old('birthday') }}" placeholder="birthday">
             <label for="birthday">Birthday:</label>
         </div>
 
@@ -55,7 +55,7 @@
             <input class="form-control" type="file" name="avatars" id="avatars">
         </div>
 
-        <select class="form-select form-select-lg mb-3" name="genders_id" id="genders_id" aria-label="Default select example">
+        <select class="form-select form-select-lg mb-3" name="genders_id" id="genders_id" value="" aria-label="Default select example">
             <option selected>Open this select menu</option>
             @foreach ($genders as $gender)
                 <option value="{{ $gender->id }}">
@@ -83,27 +83,27 @@
         </select>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="facebook" id="facebook" placeholder="facebook">
+            <input type="text" class="form-control" name="facebook" id="facebook" value="{{old('linkedIn') }}" placeholder="facebook">
             <label for="facebook">facebook</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="linkedIn" id="linkedIn" placeholder="linkedIn">
+            <input type="text" class="form-control" name="linkedIn" id="linkedIn" value="{{old('linkedIn') }}" placeholder="linkedIn">
             <label for="linkedIn">linkedIn</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="instagram" id="instagram" placeholder="instagram">
+            <input type="text" class="form-control" name="instagram" id="instagram" value="{{old('instagram') }}" placeholder="instagram">
             <label for="instagram">instagram</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="youtube" id="youtube" placeholder="youtube">
+            <input type="text" class="form-control" name="youtube" id="youtube" value="{{ old('youtube') }}"  placeholder="youtube">
             <label for="youtube">youtube</label>
         </div>
 
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="website" id="website" placeholder="website">
+            <input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}" placeholder="website">
             <label for="website">website</label>
         </div>
 

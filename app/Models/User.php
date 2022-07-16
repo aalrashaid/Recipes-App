@@ -59,4 +59,13 @@ class User extends Authenticatable
             ]
         ];
     }
+
+    /**
+     * Relationship : One To One
+     * Get the profiles associated with the user.
+     */
+    public function profiles()
+    {
+        return $this->hasOne(profiles::class);
+    }
 }

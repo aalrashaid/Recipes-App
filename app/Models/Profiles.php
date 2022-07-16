@@ -45,7 +45,23 @@ class Profiles extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','country_id','language_id','genders_id','fullName','slug','bio','quotes','birthday','gender','avatar','facebook','linkedIn','instagram','youtube','website'];
+    protected $fillable = [
+        'user_id',
+        'country_id',
+        'language_id',
+        'genders_id',
+        'fullName',
+        'slug',
+        'bio',
+        'quotes',
+        'birthday',
+        'avatar',
+        'facebook',
+        'linkedIn',
+        'instagram',
+        'youtube',
+        'website'
+    ];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -59,5 +75,14 @@ class Profiles extends Model
                 'source' => 'fullName'
             ]
         ];
+    }
+
+    /**
+     * Relationship : belongsTo user
+     * Get the user that owns the profiles.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
