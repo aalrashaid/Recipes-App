@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use App\Models\User;
+
 class ThumbnailsFactory extends Factory
 {
     /**
@@ -15,6 +17,11 @@ class ThumbnailsFactory extends Factory
     {
         return [
             //
+            'user_id'  => User::all()->random()->id,
+
+            'thumbnail'  => $this->faker->word(),
+            'size'  => $this->faker->randomNumber(4),
+            'path'  => $this->faker->imageUrl($width = 640,  $height = 480, 'food'),
         ];
     }
 }

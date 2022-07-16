@@ -14,8 +14,18 @@ class CreateCuisinesTable extends Migration
     public function up()
     {
         Schema::create('cuisines', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
+            //$table->comment('Business calculations');
             $table->id();
+            $table->string('name')->nullable()->comment('foreign key tables users');
+            //  $table->string('slug')->nullable()->comment('foreign key tables users');
+            $table->string('slug')->nullable()->unique()->comment('foreign key tables users');
+            $table->text('description')->nullable()->comment('foreign key tables users');
             $table->timestamps();
+
         });
     }
 
