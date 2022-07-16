@@ -16,6 +16,7 @@ class RecipesController extends Controller
     public function index()
     {
         //
+        return view('Recipes.index');
     }
 
     /**
@@ -26,6 +27,7 @@ class RecipesController extends Controller
     public function create()
     {
         //
+        return view('Recipes.create');
     }
 
     /**
@@ -37,6 +39,8 @@ class RecipesController extends Controller
     public function store(StoreRecipesRequest $request)
     {
         //
+
+        return redirect()->back();
     }
 
     /**
@@ -48,6 +52,7 @@ class RecipesController extends Controller
     public function show(Recipes $recipes)
     {
         //
+        return view('Recipes.show');
     }
 
     /**
@@ -59,6 +64,7 @@ class RecipesController extends Controller
     public function edit(Recipes $recipes)
     {
         //
+        return view('Recipes.edit');
     }
 
     /**
@@ -71,6 +77,7 @@ class RecipesController extends Controller
     public function update(UpdateRecipesRequest $request, Recipes $recipes)
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -82,5 +89,6 @@ class RecipesController extends Controller
     public function destroy(Recipes $recipes)
     {
         //
+        return view('Recipes.destroy');
     }
 }

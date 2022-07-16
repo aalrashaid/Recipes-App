@@ -16,6 +16,7 @@ class ProfilesController extends Controller
     public function index()
     {
         //
+        return view('Profile.index');
     }
 
     /**
@@ -26,6 +27,7 @@ class ProfilesController extends Controller
     public function create()
     {
         //
+        return view('Profile.create');
     }
 
     /**
@@ -37,6 +39,7 @@ class ProfilesController extends Controller
     public function store(StoreProfilesRequest $request)
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -48,6 +51,7 @@ class ProfilesController extends Controller
     public function show(Profiles $profiles)
     {
         //
+        return view('Profile.show');
     }
 
     /**
@@ -59,6 +63,7 @@ class ProfilesController extends Controller
     public function edit(Profiles $profiles)
     {
         //
+        return view('Profile.edit');
     }
 
     /**
@@ -71,6 +76,7 @@ class ProfilesController extends Controller
     public function update(UpdateProfilesRequest $request, Profiles $profiles)
     {
         //
+        return redirect()->back();
     }
 
     /**
@@ -82,5 +88,6 @@ class ProfilesController extends Controller
     public function destroy(Profiles $profiles)
     {
         //
+        return view('Profile.destroy');
     }
 }
