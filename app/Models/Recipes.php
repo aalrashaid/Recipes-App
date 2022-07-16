@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class Recipes extends Model
 {
     use HasFactory;
-
+    use Sluggable;
     /**
      * The table associated with the model.
      *
@@ -43,4 +45,18 @@ class Recipes extends Model
      * @var array
      */
     protected $fillable = ['user_id','category_id','cuisines_id','thumbnail_id','title','slug','dsescription','youtubevideo','method','difficlty','preptime','cooktime','total','servings','yield','ingredients','directions','nutritionFacts'];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }

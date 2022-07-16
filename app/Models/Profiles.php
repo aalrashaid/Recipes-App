@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class Profiles extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     /**
      * The table associated with the model.
@@ -43,4 +46,18 @@ class Profiles extends Model
      * @var array
      */
     protected $fillable = ['user_id','country_id','language_id','genders_id','fullName','slug','bio','quotes','birthday','gender','avatar','facebook','linkedIn','instagram','youtube','website'];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'fullName'
+            ]
+        ];
+    }
 }
