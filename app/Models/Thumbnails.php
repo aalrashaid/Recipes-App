@@ -43,4 +43,13 @@ class Thumbnails extends Model
      * @var array
      */
     protected $fillable = ['user_id','thumbnail','size','path'];
+
+    /**
+     * Relationship : One To One
+     * Get the profiles associated with the user.
+     */
+    public function Recipes()
+    {
+        return $this->hasMany(Recipes::class);
+    }
 }

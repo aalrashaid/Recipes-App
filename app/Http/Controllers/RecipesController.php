@@ -22,12 +22,17 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        //
-        $recipes = DB::table('recipes')->get();
-        $cuisines = DB::table('cuisines')->get();
-        $categories = DB::table('categories')->get();
+        $Recipes = Recipes::all();
+        $Cuisines = cuisines::all();
+        $Categories = categories::all();
 
-        return view('Recipes.index',['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories]);
+        return view('Recipes.index', compact('Recipes','Cuisines','Categories'));
+        //
+        // $recipes = DB::table('recipes')->get();
+        // $cuisines = DB::table('cuisines')->get();
+        // $categories = DB::table('categories')->get();
+
+        //return view('Recipes.index',['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories]);
     }
 
     /**
@@ -47,6 +52,7 @@ class RecipesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  int  $id
      * @param  \App\Http\Requests\StoreRecipesRequest  $request
      * @return \Illuminate\Http\Response
      */
@@ -69,31 +75,52 @@ class RecipesController extends Controller
 
         $Thumbnails->save();
 
-        $recipes = recipes::create([
+        $Recipes = new Recipes;
 
-            'user_ID' => auth()->user()->id,
-            //'user_id' => $request->get("user_id"),
-            'cuisines_id' => $request->cuisines_id,
-            'category_id' => $request->category_id,
-            'thumbnail_id' => $Thumbnails->id,
-           // 'thumbnail_id' => $Thumbnails->id,
-            //'thumbnail_id' => $request->thumbnails['id'],
-            'title' => $request->title,
-            'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),
-            'dsescription' => $request->dsescription,
-            'youtubevideo' => $request->youtubevideo,
-            'method' => $request->method,
-            'difficlty' => $request->difficlty,
-            'preptime' => $request->preptime,
-            'cooktime' => $request->cooktime,
-            'total' => $request->total,
-            'servings' => $request->servings,
-            'yield' => $request->yield,
-            'ingredients' => $request->ingredients,
-            'directions' => $request->directions,
-            'nutritionFacts' => $request->nutritionFacts,
+        $Recipes->user_id = auth()->user()->id;
+        $Recipes->cuisines_id = $request->cuisines_id;
+        $Recipes->category_id = $request->category_id;
+        $Recipes->thumbnail_id = $Thumbnails->id;
+        $Recipes->title = $request->title;
+        $Recipes->slug = SlugService::createSlug(recipes::class, 'slug', $request->title);
+        $Recipes->dsescription = $request->dsescription;
+        $Recipes->youtubevideo = $request->youtubevideo;
+        $Recipes->method = $request->method;
+        $Recipes->difficlty = $request->difficlty;
+        $Recipes->preptime = $request->preptime;
+        $Recipes->cooktime = $request->cooktime;
+        $Recipes->total = $request->total;
+        $Recipes->serving = $request->servings;
+        $Recipes->yield =$request->yield;
+        $Recipes->ingredients =$request->ingredients;
+        $Recipes->directions = $request->directions;
+        $Recipes->nutritionFacts = $request->nutritionFacts;
 
-        ]);
+        // $recipes = recipes::create([
+
+        //     'user_ID' => auth()->user()->id,
+        //     //'user_id' => $request->get("user_id"),
+        //     'cuisines_id' => $request->cuisines_id,
+        //     'category_id' => $request->category_id,
+        //     'thumbnail_id' => $Thumbnails->id,
+        //    // 'thumbnail_id' => $Thumbnails->id,
+        //     //'thumbnail_id' => $request->thumbnails['id'],
+        //     'title' => $request->title,
+        //     'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),
+        //     'dsescription' => $request->dsescription,
+        //     'youtubevideo' => $request->youtubevideo,
+        //     'method' => $request->method,
+        //     'difficlty' => $request->difficlty,
+        //     'preptime' => $request->preptime,
+        //     'cooktime' => $request->cooktime,
+        //     'total' => $request->total,
+        //     'servings' => $request->servings,
+        //     'yield' => $request->yield,
+        //     'ingredients' => $request->ingredients,
+        //     'directions' => $request->directions,
+        //     'nutritionFacts' => $request->nutritionFacts,
+
+        // ]);
         dd($request);
         //$recipes->save();
        // dd($request);
@@ -104,13 +131,28 @@ class RecipesController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  int  $id
      * @param  \App\Models\Recipes  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipes $recipes)
+    public function show(Recipes $recipes,$id)
     {
         //
-        return view('Recipes.show');
+        $recipes = Recipes::findOrFail($id);
+        //dd($recipes);
+        $Recipes = Recipes::all();
+        $Cuisines = cuisines::all();
+        $Categories = categories::all();
+
+        return view('Recipes.show', compact('Recipes','Cuisines','Categories'));
+
+    //     $recipes = DB::table('recipes')->get();
+    //     $cuisines = DB::table('cuisines')->get();
+    //     $categories = DB::table('categories')->get();
+
+    //     dd($recipes);
+
+    //     return view('Recipes.show', ['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories] );
     }
 
     /**

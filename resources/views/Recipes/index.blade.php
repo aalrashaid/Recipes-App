@@ -44,7 +44,7 @@
                             {{ $recipe->dsescription }}
                         </td>
 
-                        @foreach ($cuisines as $key => $cuisine)
+                        @foreach ($Cuisines as $key => $cuisine)
                             <td>
                                 <label name="cuisines_id" id="cuisines_id" value="{{ $key }}"
                                     @if ($recipe->cuisines_id == $cuisine->id)  @endif>
@@ -53,7 +53,7 @@
                             </td>
                         @endforeach
 
-                        @foreach ( $categories as $key => $category)
+                        @foreach ( $Categories as $key => $category)
                             <td>
                                 <label name="category_id" id="category_id" value="{{ $key }}"
                                     @if ($recipe->category_id == $category->id)  @endif>

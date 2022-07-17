@@ -78,4 +78,40 @@ class Recipes extends Model
             ]
         ];
     }
+
+    /**
+     * Relationship : belongsTo user
+     * Get the user that owns the profiles.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relationship : belongsTo user
+     * Get the user that owns the profiles.
+     */
+    public function Thumbnails()
+    {
+        return $this->belongsTo(Thumbnails::class);
+    }
+
+     /**
+     * Relationship : belongsTo user
+     * Get the user that owns the profiles.
+     */
+    public function Cuisines()
+    {
+        return $this->belongsTo(Cuisines::class);
+    }
+
+     /**
+     * Relationship : belongsTo user
+     * Get the user that owns the profiles.
+     */
+    public function Categories()
+    {
+        return $this->belongsTo(Categories::class);
+    }
 }

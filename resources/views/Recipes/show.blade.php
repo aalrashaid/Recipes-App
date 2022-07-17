@@ -12,87 +12,87 @@
         </div>
     @endif
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Name Recipe:</label>
-        <label for="floatingInputInvalid">{{ $recipes->title }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->title }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Thumbnail Recipe:</label>
         <p></p>
-    </div> --}}
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Cuisine:</label>
-        <label for="floatingInputInvalid">{{ $recipes->cuisines_id }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->cuisines_id }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Category:</label>
-        <label for="floatingInputInvalid">{{ $recipes->category_id }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->category_id }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Dsescription:</label>
-        <p>{{ $recipes->dsescription }}</p>
-    </div> --}}
+        <p>{{ $Recipes->dsescription }}</p>
+    </div>
 
-    {{-- <div>
-        {{-- <iframe width="560" height="315" src="{{ $recipes->youtubevideo }}" title="YouTube video player"
+    <div>
+        <iframe width="560" height="315" src="{{ $Recipes->youtubevideo }}" title="YouTube video player"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe> --}}
+            allowfullscreen></iframe>
 
-            {{-- {{ $recipes->youtubevideo }}
+            {{ $Recipes->youtubevideo }}
 
-    </div> --}}
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Method:</label>
-        <label for="floatingInputInvalid">{{ $recipes->method }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->method }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Difficlty:</label>
-        <label for="floatingInputInvalid">{{ $recipes->difficlty }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->difficlty }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Prep Time:</label>
-        <label for="floatingInputInvalid">{{ $recipes->preptime }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->preptime }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Cook Time:</label>
-        <label for="floatingInputInvalid">{{ $recipes->cooktime }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->cooktime }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Total:</label>
-        <label for="floatingInputInvalid">{{ $recipes->total }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->total }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Servings:</label>
-        <label for="floatingInputInvalid">{{ $recipes->servings }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->servings }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Yield:</label>
-        <label for="floatingInputInvalid">{{ $recipes->yield }}</label>
-    </div> --}}
+        <label for="floatingInputInvalid">{{ $Recipes->yield }}</label>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">Ingredients:</label>
-        <p>{{ $recipes->ingredients }}</p>
-    </div> --}}
+        <p>{{ $Recipes->ingredients }}</p>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">directions:</label>
-        <p>{{ $recipes->directions }}</p>
-    </div> --}}
+        <p>{{ $Recipes->directions }}</p>
+    </div>
 
-    {{-- <div>
+    <div>
         <label for="floatingInputInvalid">nutritionFacts:</label>
-        <p>{{ $recipes->nutritionFacts }}</p>
-    </div> --}}
+        <p>{{ $Recipes->nutritionFacts }}</p>
+    </div>
 @endsection

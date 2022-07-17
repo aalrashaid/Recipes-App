@@ -68,4 +68,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(profiles::class);
     }
+
+    /**
+     * Relationship : One To One
+     * Get the profiles associated with the user.
+     */
+    public function Recipes()
+    {
+        return $this->hasMany(Recipes::class);
+    }
 }

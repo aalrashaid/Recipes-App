@@ -60,4 +60,13 @@ class Cuisines extends Model
             ]
         ];
     }
+
+    /**
+     * Relationship : One To One
+     * Get the profiles associated with the user.
+     */
+    public function Recipes()
+    {
+        return $this->hasMany(Recipes::class);
+    }
 }
