@@ -44,23 +44,23 @@
                             {{ $recipe->dsescription }}
                         </td>
 
-                        @foreach ($Cuisines as $key => $cuisine)
+                        {{-- @foreach ($Cuisines as $key => $cuisine)
                             <td>
                                 <label name="cuisines_id" id="cuisines_id" value="{{ $key }}"
-                                    @if ($recipe->cuisines_id == $cuisine->id)  @endif>
+                                    @if ($recipe->cuisines_id == $cuisine->id) selected @endif>
                                     {{ $cuisine->name }}
                                 </label>
                             </td>
-                        @endforeach
+                        @endforeach --}}
 
-                        @foreach ( $Categories as $key => $category)
+                        {{-- @foreach ( $Categories as $key => $category)
                             <td>
                                 <label name="category_id" id="category_id" value="{{ $key }}"
-                                    @if ($recipe->category_id == $category->id)  @endif>
+                                    @if ($recipe->category_id == $category->id) selected @endif>
                                     {{ $category->name }}
                                 </label>
                             </td>
-                        @endforeach
+                        @endforeach --}}
 
                     </tr>
                 @endforeach
@@ -69,7 +69,7 @@
         </table>
     </div>
     <div>
-        <nav aria-label="Page navigation example">
+        {{-- <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                     <a class="page-link">Previous</a>
@@ -81,6 +81,8 @@
                     <a class="page-link" href="#">Next</a>
                 </li>
             </ul>
-        </nav>
+        </nav> --}}
+
+        {{-- {{ $paginator->links('bootstrap-4', ['foo' => 'bar']) }} --}}
     </div>
 @endsection

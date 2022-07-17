@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('Recipes.update', $recipes->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('Recipes.update', $Recipes->id) }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -27,21 +27,18 @@
 
         <div class="form-floating mb-3">
             <input type="text" name="name" id="name" class="form-control" placeholder="Name Recipe"
-                value="{{ $recipes->title }}">
+                value="{{ $Recipes->title }}">
             <label for="name">Name Recipe</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug Name"
-                value="{{ $recipes->slug }}">
+                value="{{ $Recipes->slug }}">
             <label for="slug">Slug Name</label>
         </div>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control" name="dsescription" id="dsescription" placeholder="Leave a dsescription here"
-                style="height: 100px">
-                {{ $recipes->dsescription }}
-            </textarea>
+            <textarea class="form-control" name="dsescription" id="dsescription" placeholder="Leave a dsescription here"style="height: 100px">{{ $Recipes->dsescription }}</textarea>
             <label for="dsescription">Dsescription</label>
         </div>
 
@@ -53,90 +50,78 @@
         <select class="form-select form-select-lg mb-3" name="cuisines_id" id="cuisines_id"
             aria-label=".form-select-lg example">
             <option selected>Open this select menu</option>
-            @foreach ($cuisines as $cuisine )
-                <option value="{{ $cuisine->id }}" {{ ( $cuisine->id == $recipes->cuisines_id  ) ? 'selected' : '' }} >{{ $cuisine->name }}</option>
+            @foreach ($Cuisines as $cuisine )
+                <option value="{{ $cuisine->id }}" {{ ( $cuisine->id == $Recipes->cuisines_id  ) ? 'selected' : '' }} >{{ $cuisine->name }}</option>
             @endforeach
         </select>
 
-        {{-- <select class="form-select form-select-lg mb-3" name="" id="" aria-label=".form-select-lg example">
+        <select class="form-select form-select-lg mb-3" name="" id="" aria-label=".form-select-lg example">
             <option selected>Open this select menu</option>
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @foreach ($Categories as $category)
+                <option value="{{ $category->id }}" {{ ( $category->id == $Recipes->category_id  ) ? 'selected' : '' }}>{{ $category->name }}</option>
             @endforeach
 
-        </select> --}}
+        </select>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control" name="youtubevideo" id="youtubevideo" placeholder="Leave a youtube embed share here"
-                style="height: 100px">
-                {{ $recipes->youtubevideo }}
-            </textarea>
+            <textarea class="form-control" name="youtubevideo" id="youtubevideo" placeholder="Leave a youtube embed share here" style="height: 100px">{{ $Recipes->youtubevideo }}</textarea>
             <label for="nutritionFacts">youtube:</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="method" id="method" class="form-control" placeholder="method"
-                value="{{ $recipes->method }}">
+                value="{{ $Recipes->method }}">
             <label for="method">Method</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="difficlty" id="difficlty" class="form-control" placeholder="difficlty"
-                value="{{ $recipes->difficlty }}">
+                value="{{ $Recipes->difficlty }}">
             <label for="difficlty">Difficlty</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="preptime" id="preptime" class="form-control" placeholder="prep time"
-                value="{{ $recipes->preptime }}">
+                value="{{ $Recipes->preptime }}">
             <label for="preptime">Prep Time</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="cooktime" id="cooktime" class="form-control" placeholder="cook time"
-                value="{{ $recipes->cooktime }}">
+                value="{{ $Recipes->cooktime }}">
             <label for="cooktime">Cook Time</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="total" id="total" class="form-control" placeholder="total"
-                value="{{ $recipes->total }}">
+                value="{{ $Recipes->total }}">
             <label for="total">Total</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="servings" id="servings" class="form-control" placeholder="servings"
-                value="{{ $recipes->servings }}">
+                value="{{ $Recipes->servings }}">
             <label for="servings">Servings</label>
         </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="yield" id="yield" class="form-control" placeholder="yield"
-                value="{{ $recipes->yield }}">
+                value="{{ $Recipes->yield }}">
             <label for="yield">Yield</label>
         </div>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control" name="ingredients" id="ingredients" placeholder="Leave a ingredients here"
-                style="height: 100px">
-                {{ $recipes->ingredients }}
-            </textarea>
+            <textarea class="form-control" name="ingredients" id="ingredients" placeholder="Leave a ingredients here" style="height: 100px">{{ $Recipes->ingredients }}</textarea>
             <label for="ingredients">Ingredients</label>
         </div>
 
-        <div class="form-floating">
-            <textarea class="form-control" name="directions" id="directions" placeholder="Leave a dsescription here"
-                style="height: 100px">
-                {{ $recipes->directions }}
-            </textarea>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" name="directions" id="directions" placeholder="Leave a dsescription here" style="height: 100px">{{ $Recipes->directions }}</textarea>
             <label for="directions">Directions</label>
         </div>
 
         <div class="form-floating mb-3">
-            <textarea class="form-control" name="nutritionFacts" id="nutritionFacts" placeholder="Leave a nutritionFacts here"
-                style="height: 100px">
-                {{ $recipes->nutritionFacts }}
-            </textarea>
+            <textarea class="form-control" name="nutritionFacts" id="nutritionFacts" placeholder="Leave a nutritionFacts here" style="height: 100px">{{ $Recipes->nutritionFacts }}</textarea>
             <label for="nutritionFacts">NutritionFacts</label>
         </div>
 
