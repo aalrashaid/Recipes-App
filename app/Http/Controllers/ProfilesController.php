@@ -29,7 +29,7 @@ class ProfilesController extends Controller
         //dd();
         $Profiles = DB::table('Profiles')->where('id');
 
-        return view('Profile.index',compact('Profiles') );
+        return view('Profile.index', ['profiles' => $Profiles] );
     }
 
     /**

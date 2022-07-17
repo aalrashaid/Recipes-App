@@ -44,7 +44,26 @@ class Recipes extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','category_id','cuisines_id','thumbnail_id','title','slug','dsescription','youtubevideo','method','difficlty','preptime','cooktime','total','servings','yield','ingredients','directions','nutritionFacts'];
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'cuisines_id',
+        'thumbnail_id',
+        'title',
+        'slug',
+        'dsescription',
+        'youtubevideo',
+        'method',
+        'difficlty',
+        'preptime',
+        'cooktime',
+        'total',
+        'servings',
+        'yield',
+        'ingredients',
+        'directions',
+        'nutritionFacts'
+    ];
 
     /**
      * Return the sluggable configuration array for this model.

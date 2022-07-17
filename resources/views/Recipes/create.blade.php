@@ -37,21 +37,21 @@
                 style="height: 100px"></textarea>
             <label for="dsescription">Dsescription:</label>
         </div>
-        {{-- <div class="mb-3">
+        <div class="mb-3">
             <label for="thumbnails" class="form-label">Thumbnail Recipe</label>
-            <input class="form-control" type="file" name="thumbnails" id="thumbnails" value="{{ old('thumbnails') }}" >
-        </div> --}}
+            <input class="form-control" type="file" name="thumbnail_id" id="thumbnail_id" value="{{ old('thumbnail_id') }}" >
+        </div>
         <select class="form-select form-select-lg mb-3" name="cuisines_id" id="cuisines_id"
             aria-label=".form-select-lg example">
             <option selected>Open this select menu</option>
-            @foreach ($cuisines as $cuisine)
+            @foreach ($Cuisines as $cuisine)
                 <option value="{{ $cuisine->id }}">{{ $cuisine->name }}</option>
             @endforeach
         </select>
         <select class="form-select form-select-lg mb-3" name="category_id" id="category_id"
             aria-label=".form-select-lg example">
             <option selected>Open this select menu</option>
-            @foreach ($categories as $category)
+            @foreach ($Categories as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
 

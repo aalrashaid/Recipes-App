@@ -6,6 +6,13 @@ use App\Http\Requests\StoreRecipesRequest;
 use App\Http\Requests\UpdateRecipesRequest;
 use App\Models\Recipes;
 
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\categories;
+use App\Models\cuisines;
+use App\Models\thumbnails;
+
 class RecipesController extends Controller
 {
     /**
@@ -16,7 +23,11 @@ class RecipesController extends Controller
     public function index()
     {
         //
-        return view('Recipes.index');
+        $recipes = DB::table('recipes')->get();
+        $cuisines = DB::table('cuisines')->get();
+        $categories = DB::table('categories')->get();
+
+        return view('Recipes.index',['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories]);
     }
 
     /**
@@ -27,7 +38,10 @@ class RecipesController extends Controller
     public function create()
     {
         //
-        return view('Recipes.create');
+        $cuisines = DB::table('cuisines')->get();
+        $categories = DB::table('categories')->get();
+
+        return view('Recipes.create',['Cuisines'=>$cuisines, 'Categories' => $categories]);
     }
 
     /**
@@ -39,6 +53,50 @@ class RecipesController extends Controller
     public function store(StoreRecipesRequest $request)
     {
         //
+        $Thumbnails = new Thumbnails;
+
+         if ($request->hasFile('thumbnail_id')) {
+             $name = $request->file('thumbnail_id')->getClientOriginalName();
+             $size = $request->file('thumbnail_id')->getSize();
+             $path = $request->file('thumbnail_id')->storeAs('public/Recipes/Thumbnails', $name);
+         }
+
+        $Thumbnails->user_id = auth()->user()->id;
+
+        $Thumbnails->thumbnail = $name;
+        $Thumbnails->size = $size;
+        $Thumbnails->path = $path;
+
+        $Thumbnails->save();
+
+        $recipes = recipes::create([
+
+            'user_ID' => auth()->user()->id,
+            //'user_id' => $request->get("user_id"),
+            'cuisines_id' => $request->cuisines_id,
+            'category_id' => $request->category_id,
+            'thumbnail_id' => $Thumbnails->id,
+           // 'thumbnail_id' => $Thumbnails->id,
+            //'thumbnail_id' => $request->thumbnails['id'],
+            'title' => $request->title,
+            'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),
+            'dsescription' => $request->dsescription,
+            'youtubevideo' => $request->youtubevideo,
+            'method' => $request->method,
+            'difficlty' => $request->difficlty,
+            'preptime' => $request->preptime,
+            'cooktime' => $request->cooktime,
+            'total' => $request->total,
+            'servings' => $request->servings,
+            'yield' => $request->yield,
+            'ingredients' => $request->ingredients,
+            'directions' => $request->directions,
+            'nutritionFacts' => $request->nutritionFacts,
+
+        ]);
+        dd($request);
+        //$recipes->save();
+       // dd($request);
 
         return redirect()->back();
     }

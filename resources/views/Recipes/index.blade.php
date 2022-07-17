@@ -33,7 +33,7 @@
             </thead>
             <tbody class="table-group-divider">
 
-                @foreach ($recipes as $recipe)
+                @foreach ($Recipes as $recipe)
                     <tr>
                         <th scope="row">{{ $recipe->id }}</th>
                         <td>
