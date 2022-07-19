@@ -23,6 +23,11 @@
     </div>
 
     <div>
+        <label for="floatingInputInvalid">Dsescription:</label>
+        <p>{{ $Recipes->dsescription }}</p>
+    </div>
+
+    <div>
         <label for="floatingInputInvalid">Cuisine:</label>
         <label for="floatingInputInvalid">{{ $Recipes->cuisines_id }}</label>
     </div>
@@ -30,11 +35,6 @@
     <div>
         <label for="floatingInputInvalid">Category:</label>
         <label for="floatingInputInvalid">{{ $Recipes->category_id }}</label>
-    </div>
-
-    <div>
-        <label for="floatingInputInvalid">Dsescription:</label>
-        <p>{{ $Recipes->dsescription }}</p>
     </div>
 
     <div>

@@ -28,14 +28,14 @@ class Languages extends Model
      *
      * @var bool
      */
-    public $incrementing = false;
+    public $incrementing = true;
 
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -43,4 +43,13 @@ class Languages extends Model
      * @var array
      */
     protected $fillable = ['name','iso_639-1'];
+
+    /**
+     * Relationship : belongsTo Profiles
+     * Get the Profiles that owns the Languages.
+     */
+    public function Profiles()
+    {
+        return $this->belongsTo(Profiles::class);
+    }
 }

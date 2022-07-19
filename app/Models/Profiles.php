@@ -31,14 +31,14 @@ class Profiles extends Model
      *
      * @var bool
      */
-    public $incrementing = false;
+    public $incrementing = true;
 
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -84,5 +84,32 @@ class Profiles extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Relationship : One To One
+     * Get the Languages associated with the user.
+     */
+    public function Languages()
+    {
+        return $this->hasOne(Languages::class);
+    }
+
+    /**
+     * Relationship : One To One
+     * Get the Genders associated with the user.
+     */
+    public function Genders()
+    {
+        return $this->hasOne(Genders::class);
+    }
+
+     /**
+     * Relationship : One To One
+     * Get the Countries associated with the user.
+     */
+    public function Countries()
+    {
+        return $this->hasOne(Countries::class);
     }
 }

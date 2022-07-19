@@ -22,9 +22,9 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        //$Recipes = Recipes::all()->get()->paginate(15);
+        $Recipes = Recipes::all();
         //$Recipes = DB::table('users')->paginate(15);
-        $Recipes = Recipes::paginate(25);
+        //$Recipes = Recipes::paginate(25);
 
         $Cuisines = Cuisines::all();
         $Categories = Categories::all();
@@ -107,7 +107,7 @@ class RecipesController extends Controller
              'cuisines_id' => $request->cuisines_id,
              'category_id' => $request->category_id,
              'thumbnail_id' => $request->Thumbnails->id,
-        //    // 'thumbnail_id' => $Thumbnails->id,
+            // 'thumbnail_id' => $Thumbnails->id,
         //     //'thumbnail_id' => $request->thumbnails['id'],
              'title' => $request->title,
              'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),

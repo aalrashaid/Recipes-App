@@ -194,7 +194,7 @@ class ProfilesController extends Controller
         $profiles->youtube = $request->youtube;
         $profiles->website = $request->website;
 
-        //$profiles->save();
+        $profiles->save();
        // $profiles->push();
 
        dd($profiles);

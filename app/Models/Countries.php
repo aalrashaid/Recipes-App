@@ -28,14 +28,14 @@ class Countries extends Model
      *
      * @var bool
      */
-    public $incrementing = false;
+    public $incrementing = true;
 
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -43,4 +43,13 @@ class Countries extends Model
      * @var array
      */
     protected $fillable = ['iso','name','nicename','iso3','numbercode','phonecode'];
+
+     /**
+     * Relationship : belongsTo Profiles
+     * Get the Profiles that owns the countries.
+     */
+    public function Profiles()
+    {
+        return $this->belongsTo(Profiles::class);
+    }
 }

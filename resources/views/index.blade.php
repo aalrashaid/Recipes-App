@@ -1,9 +1,9 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
 @section('title', 'Page Title')
 
 @section('content')
-    <p>This is my body content.</p>
+    {{-- <p>This is my body content.</p> --}}
     <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
@@ -37,5 +37,5 @@
           </div>
         </div>
       </div>
-
+    </div>
 @endsection

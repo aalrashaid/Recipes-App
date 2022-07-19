@@ -23,7 +23,7 @@
 
         @csrf
 
-        @method('PUT')
+        @method('PATCH')
 
         <div class="form-floating mb-3">
             <input type="text" name="name" id="name" class="form-control" placeholder="Name Recipe"
