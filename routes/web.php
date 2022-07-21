@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\ThumbnailsController;
+use App\Models\Recipes;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,10 @@ use App\Http\Controllers\ThumbnailsController;
 */
 
 Route::get('/', function () {
-    return view('index');
+
+    $recipes = Recipes::all();
+
+    return view('index', compact('recipes') );
 });
 
 Route::get('/dashboard', function () {

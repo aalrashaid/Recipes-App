@@ -53,18 +53,17 @@
 <body>
 
 
-
-
-
-        <!-- Page Content -->
-        <main>
-            <div class="container">
-                <div class="row">
-                    @yield('content')
-                </div>
+    <!-- Page Content -->
+    <main>
+        <div class="container">
+            <div class="row">
+                @yield('content')
             </div>
-        </main>
+        </div>
+    </main>
     </div>
+
+
 
 
 
