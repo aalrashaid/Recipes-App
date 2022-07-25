@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCountriesRequest;
 use App\Http\Requests\UpdateCountriesRequest;
-use App\Models\Countries;
+use App\Models\Country;
 
 class CountriesController extends Controller
 {
@@ -42,10 +42,10 @@ class CountriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Countries  $countries
+     * @param  \App\Models\Country  $countries
      * @return \Illuminate\Http\Response
      */
-    public function show(Countries $countries)
+    public function show(Country $countries)
     {
         //
     }
@@ -53,10 +53,10 @@ class CountriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Countries  $countries
+     * @param  \App\Models\Country  $countries
      * @return \Illuminate\Http\Response
      */
-    public function edit(Countries $countries)
+    public function edit(Country $countries)
     {
         //
     }
@@ -65,10 +65,10 @@ class CountriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCountriesRequest  $request
-     * @param  \App\Models\Countries  $countries
+     * @param  \App\Models\Country  $countries
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountriesRequest $request, Countries $countries)
+    public function update(UpdateCountriesRequest $request, Country $countries)
     {
         //
     }
@@ -76,10 +76,10 @@ class CountriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Countries  $countries
+     * @param  \App\Models\Country  $countries
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Countries $countries)
+    public function destroy(Country $countries)
     {
         //
     }

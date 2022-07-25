@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Recipes;
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class RecipesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Recipes $recipes)
+    public function view(User $user, Recipe $recipes)
     {
         //
     }
@@ -48,10 +48,10 @@ class RecipesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Recipes $recipes)
+    public function update(User $user, Recipe $recipes)
     {
         //
     }
@@ -60,10 +60,10 @@ class RecipesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Recipes $recipes)
+    public function delete(User $user, Recipe $recipes)
     {
         //
     }
@@ -72,10 +72,10 @@ class RecipesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Recipes $recipes)
+    public function restore(User $user, Recipe $recipes)
     {
         //
     }
@@ -84,10 +84,10 @@ class RecipesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Recipes $recipes)
+    public function forceDelete(User $user, Recipe $recipes)
     {
         //
     }

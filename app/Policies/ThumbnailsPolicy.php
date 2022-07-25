@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Thumbnails;
+use App\Models\Thumbnail;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ThumbnailsPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Thumbnails $thumbnails)
+    public function view(User $user, Thumbnail $thumbnails)
     {
         //
     }
@@ -48,10 +48,10 @@ class ThumbnailsPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Thumbnails $thumbnails)
+    public function update(User $user, Thumbnail $thumbnails)
     {
         //
     }
@@ -60,10 +60,10 @@ class ThumbnailsPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Thumbnails $thumbnails)
+    public function delete(User $user, Thumbnail $thumbnails)
     {
         //
     }
@@ -72,10 +72,10 @@ class ThumbnailsPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Thumbnails $thumbnails)
+    public function restore(User $user, Thumbnail $thumbnails)
     {
         //
     }
@@ -84,10 +84,10 @@ class ThumbnailsPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Thumbnails $thumbnails)
+    public function forceDelete(User $user, Thumbnail $thumbnails)
     {
         //
     }

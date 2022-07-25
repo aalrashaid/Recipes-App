@@ -13,7 +13,7 @@
 
 
 
-    <title>{{ config('app.name', 'Recipes') }}</title>
+    <title>{{ config('app.name', 'recipes') }}</title>
 
     <!-- generics -->
     <link rel="icon" href="/path/to/favicon-32.png" sizes="32x32">

@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Cuisines;
+use App\Models\Cuisine;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class CuisinesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Cuisines $cuisines)
+    public function view(User $user, Cuisine $cuisines)
     {
         //
     }
@@ -48,10 +48,10 @@ class CuisinesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Cuisines $cuisines)
+    public function update(User $user, Cuisine $cuisines)
     {
         //
     }
@@ -60,10 +60,10 @@ class CuisinesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Cuisines $cuisines)
+    public function delete(User $user, Cuisine $cuisines)
     {
         //
     }
@@ -72,10 +72,10 @@ class CuisinesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Cuisines $cuisines)
+    public function restore(User $user, Cuisine $cuisines)
     {
         //
     }
@@ -84,10 +84,10 @@ class CuisinesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Cuisines $cuisines)
+    public function forceDelete(User $user, Cuisine $cuisines)
     {
         //
     }

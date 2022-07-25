@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\User;
-use App\Models\cuisines;
-use App\Models\thumbnails;
-use App\Models\categories;
+use App\Models\Cuisine;
+use App\Models\Thumbnail;
+use App\Models\Category;
 
 class RecipesFactory extends Factory
 {
@@ -22,9 +22,9 @@ class RecipesFactory extends Factory
             //
             'user_id'  => User::all()->random()->id,
 
-            'cuisines_id'  => cuisines::all()->random()->id,
-            'thumbnail_id'  => thumbnails::all()->random()->id,
-            'category_id'  => categories::all()->random()->id,
+            'cuisines_id'  => Cuisine::all()->random()->id,
+            'thumbnail_id'  => Thumbnail::all()->random()->id,
+            'category_id'  => Category::all()->random()->id,
 
             'title'  => $this->faker->word(),
             'slug'  => $this->faker->slug(), //This fixed the (SlugService) calls for Models later

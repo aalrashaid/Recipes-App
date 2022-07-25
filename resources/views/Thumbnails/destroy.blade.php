@@ -8,7 +8,7 @@
     <img src="" class="figure-img img-fluid rounded" alt="...">
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
   </figure>
-  <form action="{{ route('Recipes.destroy') }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('recipes.destroy') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="thumbnail" class="form-label">Uploads thumbnails</label>

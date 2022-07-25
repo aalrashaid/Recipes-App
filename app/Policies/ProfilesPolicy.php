@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Profiles;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ProfilesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Profile  $profiles
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Profiles $profiles)
+    public function view(User $user, Profile $profiles)
     {
         //
     }
@@ -48,10 +48,10 @@ class ProfilesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Profile  $profiles
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Profiles $profiles)
+    public function update(User $user, Profile $profiles)
     {
         //
     }
@@ -60,10 +60,10 @@ class ProfilesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Profile  $profiles
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Profiles $profiles)
+    public function delete(User $user, Profile $profiles)
     {
         //
     }
@@ -72,10 +72,10 @@ class ProfilesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Profile  $profiles
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Profiles $profiles)
+    public function restore(User $user, Profile $profiles)
     {
         //
     }
@@ -84,10 +84,10 @@ class ProfilesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Profiles  $profiles
+     * @param  \App\Models\Profile  $profiles
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Profiles $profiles)
+    public function forceDelete(User $user, Profile $profiles)
     {
         //
     }

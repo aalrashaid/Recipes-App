@@ -2,223 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProfilesRequest;
 use App\Http\Requests\UpdateProfilesRequest;
-use App\Models\Profiles;
 
-use Illuminate\Support\Facades\DB;
-use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\File;
-
-use App\Models\countries;
-use App\Models\languages;
-use App\Models\User;
-use App\Models\Genders;
+use App\Models\Country;
+use App\Models\Language;
+use App\Models\Gender;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ProfilesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index() : View
     {
-        //
-        //dd();
-        $Profiles = DB::table('Profiles')->where('id');
+        $data['user'] = auth()->user();
 
-        return view('Profile.index', ['profiles' => $Profiles] );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        $countries = countries::all();
-        $genders = Genders::all();
-        $languages = languages::all();
-
-        return view('Profile.create', compact('countries', 'genders', 'languages') );
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProfilesRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreProfilesRequest $request)
-    {
-        //
-        if ($request->hasFile('avatars')) {
-            $name = $request->file('avatars')->getClientOriginalName();
-            $path = $request->file('avatars')->storeAs('public/users/avatars', $name);
-        }
-
-        $profiles = new Profiles;
-
-        $profiles->user_id = auth()->user()->id;
-
-        $profiles->country_id = $request->country_id;
-        $profiles->language_id = $request->language_id;
-        $profiles->genders_id = $request->genders_id;
-
-        $profiles->fullName = $request->fullName;
-
-        $profiles->slug = SlugService::createSlug(profiles::class, 'slug', $request->fullName);
-        $profiles->bio = $request->bio;
-        $profiles->quotes = $request->quotes;
-        $profiles->birthday = $request->birthday;
-        // $profile->gender = $request->gender;
-        // $profile->avatar = $request->file('avatars')->getClientOriginalName();
-        $profiles->avatar = $name;
-        $profiles->facebook = $request->facebook;
-        $profiles->linkedIn = $request->linkedIn;
-        $profiles->instagram = $request->instagram;
-        $profiles->youtube = $request->youtube;
-        $profiles->website = $request->website;
-
-    //     if ($validator->fails()) {
-    //         Session::flash('error', $validator->messages()->first());
-    //         return redirect()->back()->withInput();
-    //    }
-
-    // if ($validator->fails()) {
-    //     return redirect('post/create')
-    //                 ->withErrors($validator)
-    //                 ->withInput();
-    // }
-
-        //dd($profile);
-        $profiles->save();
-
-        return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @param  \App\Models\Profiles  $profiles
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Profiles $profiles,$id)
-    {
-        //
-        $profiles = profiles::findOrFail($id);
-
-        $countries = countries::all();
-        //$countries = DB::table('countries')->pluck('name','id');
-        //dd($countries);
-        $genders = Genders::all();
-        $languages = languages::all();
-
-        return view('Profile.show', compact('profiles', 'countries', 'genders', 'languages'));
+        return view('profile.index', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @param  \App\Models\Profiles  $profiles
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function edit(Profiles $profiles,$id)
+    public function editProfile(): View
     {
-        //
-        $profiles = profiles::findOrFail($id);
+        $data['user'] = auth()->user();
+        $data['countries'] = Country::get();
+        $data['genders'] = Gender::get();
+        $data['languages'] = Language::get();
 
-        $countries = countries::all();
-        $genders = genders::all();
-        $languages = languages::all();
-
-        return view('Profile.edit', compact('countries', 'genders', 'languages', 'profiles'));
+        return view('profile.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
-     * @param  \App\Http\Requests\UpdateProfilesRequest  $request
-     * @param  \App\Models\Profiles  $profiles
-     * @return \Illuminate\Http\Response
+     * @param UpdateProfilesRequest $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(UpdateProfilesRequest $request, Profiles $profiles,$id)
+    public function update(UpdateProfilesRequest $request, int $id): RedirectResponse
     {
-        //
-        $profiles = profiles::findOrFail($id);
+        $model = auth()->user()
+            ->profile()
+            ->findOrFail($id);
 
-        $profiles = new Profiles;
+        $model->update($request->except('csrf_token'));
 
-        //$name = $request->file('avatar')->getClientOriginalName();
-        //$path = $request->file('avatar')->storeAs('public/users/avatars', $name);
-
-        if ($request->hasFile('avatar')) {
-
-            $name = $request->file('avatar')->getClientOriginalName();
-            $path = $request->file('avatar')->storeAs('public/users/avatars', $name);
-
-            $destination = $path;
-
-            if (File::exists($destination)) {
-                File::delete($destination);
-            }
-
-            $name = $request->file('avatar')->getClientOriginalName();
-            $path = $request->file('avatar')->storeAs('public/users/avatars', $name);
-        }
-
-        $profiles->user_id = auth()->user()->id;
-
-        $profiles->country_id = $request->country_id;
-        $profiles->language_id = $request->language_id;
-        $profiles->genders_id = $request->genders_id;
-
-        $profiles->fullName = $request->fullName;
-        $profiles->slug = SlugService::createSlug(profiles::class, 'slug', $request->fullName);
-        $profiles->bio = $request->bio;
-        $profiles->quotes = $request->quotes;
-        $profiles->birthday = $request->birthday;
-
-        $profiles->avatar = $name; //<----- ErrorException Undefined variable: name
-
-        $profiles->facebook = $request->facebook;
-        $profiles->linkedIn = $request->linkedIn;
-        $profiles->instagram = $request->instagram;
-        $profiles->youtube = $request->youtube;
-        $profiles->website = $request->website;
-
-        $profiles->save();
-       // $profiles->push();
-
-       dd($profiles);
-
-        return redirect()->back();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @param  \App\Models\Profiles  $profiles
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Profiles $profiles,$id)
-    {
-        //
-        profiles::findOrFail($id);
-
-        $profiles->delete($id);
-
-        //return view('Profile.destroy');
-
-        return redirect()->route('Profile.show')->with('success', 'Profile destroy successfully.');
-        //return view('Profile.destroy');
+        return redirect()->back()->with([
+            'class' => 'success',
+            'message' => 'Profile successfully updated'
+        ]);
     }
 }

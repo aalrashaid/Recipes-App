@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Genders;
+use App\Models\Gender;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class GendersPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Genders  $genders
+     * @param  \App\Models\Gender  $genders
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Genders $genders)
+    public function view(User $user, Gender $genders)
     {
         //
     }
@@ -48,10 +48,10 @@ class GendersPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Genders  $genders
+     * @param  \App\Models\Gender  $genders
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Genders $genders)
+    public function update(User $user, Gender $genders)
     {
         //
     }
@@ -60,10 +60,10 @@ class GendersPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Genders  $genders
+     * @param  \App\Models\Gender  $genders
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Genders $genders)
+    public function delete(User $user, Gender $genders)
     {
         //
     }
@@ -72,10 +72,10 @@ class GendersPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Genders  $genders
+     * @param  \App\Models\Gender  $genders
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Genders $genders)
+    public function restore(User $user, Gender $genders)
     {
         //
     }
@@ -84,10 +84,10 @@ class GendersPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Genders  $genders
+     * @param  \App\Models\Gender  $genders
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Genders $genders)
+    public function forceDelete(User $user, Gender $genders)
     {
         //
     }

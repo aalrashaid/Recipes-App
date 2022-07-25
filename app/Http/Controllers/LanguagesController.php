@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLanguagesRequest;
 use App\Http\Requests\UpdateLanguagesRequest;
-use App\Models\Languages;
+use App\Models\Language;
 
 class LanguagesController extends Controller
 {
@@ -42,10 +42,10 @@ class LanguagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Http\Response
      */
-    public function show(Languages $languages)
+    public function show(Language $languages)
     {
         //
     }
@@ -53,10 +53,10 @@ class LanguagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Http\Response
      */
-    public function edit(Languages $languages)
+    public function edit(Language $languages)
     {
         //
     }
@@ -65,10 +65,10 @@ class LanguagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateLanguagesRequest  $request
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLanguagesRequest $request, Languages $languages)
+    public function update(UpdateLanguagesRequest $request, Language $languages)
     {
         //
     }
@@ -76,10 +76,10 @@ class LanguagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Languages $languages)
+    public function destroy(Language $languages)
     {
         //
     }

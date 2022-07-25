@@ -14,6 +14,10 @@ class CreateJobBatchesTable extends Migration
     public function up()
     {
         Schema::create('job_batches', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->string('id')->primary();
             $table->string('name');
             $table->integer('total_jobs');

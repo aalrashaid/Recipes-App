@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCuisinesRequest;
 use App\Http\Requests\UpdateCuisinesRequest;
-use App\Models\Cuisines;
+use App\Models\Cuisine;
 
 class CuisinesController extends Controller
 {
@@ -42,10 +42,10 @@ class CuisinesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Http\Response
      */
-    public function show(Cuisines $cuisines)
+    public function show(Cuisine $cuisines)
     {
         //
     }
@@ -53,10 +53,10 @@ class CuisinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cuisines $cuisines)
+    public function edit(Cuisine $cuisines)
     {
         //
     }
@@ -65,10 +65,10 @@ class CuisinesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateCuisinesRequest  $request
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCuisinesRequest $request, Cuisines $cuisines)
+    public function update(UpdateCuisinesRequest $request, Cuisine $cuisines)
     {
         //
     }
@@ -76,10 +76,10 @@ class CuisinesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cuisines  $cuisines
+     * @param  \App\Models\Cuisine  $cuisines
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cuisines $cuisines)
+    public function destroy(Cuisine $cuisines)
     {
         //
     }

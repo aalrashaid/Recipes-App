@@ -16,9 +16,9 @@ class CreateThumbnailsTable extends Migration
         Schema::create('thumbnails', function (Blueprint $table) {
 
             $table->engine = 'InnoDB';
-            $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_unicode_ci';
-            //$table->comment('Business calculations');
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->id();
 
             //$table->unsignedBigInteger('user_id')->unsigned();

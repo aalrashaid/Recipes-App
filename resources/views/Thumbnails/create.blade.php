@@ -18,7 +18,7 @@
 	</div>
 @endif
 
-<form action="{{ route('Thumbnails.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('thumbnails.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">

@@ -129,7 +129,7 @@
                 @php
                     echo date('Y');
                 @endphp
-                {{ config('app.name', 'Recipes') }}
+                {{ config('app.name', 'recipes') }}
             </p>
 
         </div>

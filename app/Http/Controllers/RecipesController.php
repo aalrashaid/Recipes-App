@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRecipesRequest;
 use App\Http\Requests\UpdateRecipesRequest;
-use App\Models\Recipes;
+use App\Models\Recipe;
 
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Categories;
-use App\Models\Cuisines;
-use App\Models\Thumbnails;
+use App\Models\Category;
+use App\Models\Cuisine;
+use App\Models\Thumbnail;
 
 class RecipesController extends Controller
 {
@@ -22,20 +22,20 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        $Recipes = Recipes::all();
-        //$Recipes = DB::table('users')->paginate(15);
-        //$Recipes = Recipes::paginate(25);
+        $Recipes = Recipe::all();
+        //$recipes = DB::table('users')->paginate(15);
+        //$recipes = recipes::paginate(25);
 
-        $Cuisines = Cuisines::all();
-        $Categories = Categories::all();
+        $Cuisines = Cuisine::all();
+        $Categories = Category::all();
 
-        return view('Recipes.index', compact('Recipes','Cuisines','Categories'));
+        return view('recipes.index', compact('Recipes','Cuisines','Categories'));
         //
         // $recipes = DB::table('recipes')->get();
         // $cuisines = DB::table('cuisines')->get();
         // $categories = DB::table('categories')->get();
 
-        //return view('Recipes.index',['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories]);
+        //return view('recipes.index',['recipes'=> $recipes , 'Cuisine'=>$cuisines, 'Category' => $categories]);
     }
 
     /**
@@ -49,7 +49,7 @@ class RecipesController extends Controller
         $cuisines = DB::table('cuisines')->get();
         $categories = DB::table('categories')->get();
 
-        return view('Recipes.create',['Cuisines'=>$cuisines, 'Categories' => $categories]);
+        return view('recipes.create',['Cuisine'=>$cuisines, 'Category' => $categories]);
     }
 
     /**
@@ -62,13 +62,13 @@ class RecipesController extends Controller
     public function store(StoreRecipesRequest $request)
     {
         //
-        $Thumbnails = new Thumbnails;
+        $Thumbnails = new Thumbnail;
 
 
          if ($request->hasFile('thumbnail_id')) {
              $name = $request->file('thumbnail_id')->getClientOriginalName();
              $size = $request->file('thumbnail_id')->getSize();
-             $path = $request->file('thumbnail_id')->storeAs('public/Recipes/Thumbnails', $name);
+             $path = $request->file('thumbnail_id')->storeAs('public/recipes/thumbnails', $name);
          }
 
         $Thumbnails->user_id = auth()->user()->id;
@@ -79,38 +79,38 @@ class RecipesController extends Controller
 
         $Thumbnails->save();
 
-        // $Recipes = new Recipes;
+        // $recipes = new recipes;
 
-        // $Recipes->user_id = auth()->user()->id;
-        // $Recipes->cuisines_id = $request->cuisines_id;
-        // $Recipes->category_id = $request->category_id;
-        // $Recipes->thumbnail_id = $request['Thumbnails']['id'];
-        // $Recipes->title = $request->title;
-        // $Recipes->slug = SlugService::createSlug(recipes::class, 'slug', $request->title);
-        // $Recipes->dsescription = $request->dsescription;
-        // $Recipes->youtubevideo = $request->youtubevideo;
-        // $Recipes->method = $request->method;
-        // $Recipes->difficlty = $request->difficlty;
-        // $Recipes->preptime = $request->preptime;
-        // $Recipes->cooktime = $request->cooktime;
-        // $Recipes->total = $request->total;
-        // $Recipes->serving = $request->servings;
-        // $Recipes->yield =$request->yield;
-        // $Recipes->ingredients =$request->ingredients;
-        // $Recipes->directions = $request->directions;
-        // $Recipes->nutritionFacts = $request->nutritionFacts;
+        // $recipes->user_id = auth()->user()->id;
+        // $recipes->cuisines_id = $request->cuisines_id;
+        // $recipes->category_id = $request->category_id;
+        // $recipes->thumbnail_id = $request['thumbnails']['id'];
+        // $recipes->title = $request->title;
+        // $recipes->slug = SlugService::createSlug(recipes::class, 'slug', $request->title);
+        // $recipes->dsescription = $request->dsescription;
+        // $recipes->youtubevideo = $request->youtubevideo;
+        // $recipes->method = $request->method;
+        // $recipes->difficlty = $request->difficlty;
+        // $recipes->preptime = $request->preptime;
+        // $recipes->cooktime = $request->cooktime;
+        // $recipes->total = $request->total;
+        // $recipes->serving = $request->servings;
+        // $recipes->yield =$request->yield;
+        // $recipes->ingredients =$request->ingredients;
+        // $recipes->directions = $request->directions;
+        // $recipes->nutritionFacts = $request->nutritionFacts;
 
-         $Recipes = recipes::create([
+         $Recipes = Recipe::create([
 
             'user_ID' => auth()->user()->id,
              //'user_id' => $request->get("user_id"),
              'cuisines_id' => $request->cuisines_id,
              'category_id' => $request->category_id,
              'thumbnail_id' => $request->Thumbnails->id,
-            // 'thumbnail_id' => $Thumbnails->id,
+            // 'thumbnail_id' => $thumbnails->id,
         //     //'thumbnail_id' => $request->thumbnails['id'],
              'title' => $request->title,
-             'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),
+             'slug' => SlugService::createSlug(Recipe::class, 'slug', $request->title),
              'dsescription' => $request->dsescription,
              'youtubevideo' => $request->youtubevideo,
              'method' => $request->method,
@@ -137,20 +137,20 @@ class RecipesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipes $recipes,$id)
+    public function show(Recipe $recipes, $id)
     {
         //
-        $Recipes = Recipes::findOrFail($id);
+        $Recipes = Recipe::findOrFail($id);
         //dd($recipes);
-        //$Recipes = Recipes::all();
-        $Cuisines = cuisines::all();
-        $Categories = categories::all();
-        $Thumbnails = thumbnails::all();
+        //$recipes = recipes::all();
+        $Cuisines = Cuisine::all();
+        $Categories = Category::all();
+        $Thumbnails = Thumbnail::all();
 
-        return view('Recipes.show', compact('Recipes','Cuisines','Categories','Thumbnails'));
+        return view('recipes.show', compact('Recipes','Cuisines','Categories','Thumbnails'));
 
     //     $recipes = DB::table('recipes')->get();
     //     $cuisines = DB::table('cuisines')->get();
@@ -158,37 +158,37 @@ class RecipesController extends Controller
 
     //     dd($recipes);
 
-    //     return view('Recipes.show', ['Recipes'=> $recipes , 'Cuisines'=>$cuisines, 'Categories' => $categories] );
+    //     return view('recipes.show', ['recipes'=> $recipes , 'Cuisine'=>$cuisines, 'Category' => $categories] );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipes $recipes,$id)
+    public function edit(Recipe $recipes, $id)
     {
         //
-        $Recipes = Recipes::findOrFail($id);
+        $Recipes = Recipe::findOrFail($id);
         //dd($recipes);
-        //$Recipes = Recipes::all();
-        $Cuisines = cuisines::all();
-        $Categories = categories::all();
-        $Thumbnails = thumbnails::all();
+        //$recipes = recipes::all();
+        $Cuisines = Cuisine::all();
+        $Categories = Category::all();
+        $Thumbnails = Thumbnail::all();
 
-        return view('Recipes.edit', compact('Recipes','Cuisines','Categories','Thumbnails') );
+        return view('recipes.edit', compact('Recipes','Cuisines','Categories','Thumbnails') );
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateRecipesRequest  $request
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRecipesRequest $request, Recipes $recipes)
+    public function update(UpdateRecipesRequest $request, Recipe $recipes)
     {
         //
         return redirect()->back();
@@ -197,12 +197,12 @@ class RecipesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Recipes  $recipes
+     * @param  \App\Models\Recipe  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipes $recipes)
+    public function destroy(Recipe $recipes)
     {
         //
-        return view('Recipes.destroy');
+        return view('recipes.destroy');
     }
 }

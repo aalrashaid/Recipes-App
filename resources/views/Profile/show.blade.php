@@ -20,7 +20,7 @@
             {{ session('status') }}
         </div>
     @endif
-    {{-- /Users/aalrashaid/Documents/GitHub/Recipes-App/public/storage/users/avatars/unnamed_9.jpeg --}}
+    {{-- /Users/aalrashaid/Documents/GitHub/recipes-App/public/storage/users/avatars/unnamed_9.jpeg --}}
     <div>
         <img src="{{ asset('/storage/users/avatars/' . $profiles->avatar) }}" name="avatar" id="avatar"
             class="img-thumbnail" alt="{{ $profiles->avatar }}">
@@ -110,10 +110,10 @@
         </label>
     </div>
     <div>
-        {{-- <a class="btn btn-outline-dark" href="{{ route('Profile.create') }}" role="button">Create</a> --}}
-        {{-- <a class="btn btn-outline-dark" href="{{ route('Profile/{$id}/edit') }}" role="button">Edit</a> --}}
-        {{-- <a class="btn btn-outline-dark" href="{{ route('Profile.show') }}" role="button">Show</a> --}}
-        {{-- <a class="btn btn-outline-warning" href="{{ route('Profile.destroy') }}" role="button">Delet</a> --}}
+        {{-- <a class="btn btn-outline-dark" href="{{ route('profile.create') }}" role="button">Create</a> --}}
+        {{-- <a class="btn btn-outline-dark" href="{{ route('profile/{$id}/edit') }}" role="button">Edit</a> --}}
+        {{-- <a class="btn btn-outline-dark" href="{{ route('profile.show') }}" role="button">Show</a> --}}
+        {{-- <a class="btn btn-outline-warning" href="{{ route('profile.destroy') }}" role="button">Delet</a> --}}
 
 
     </div>

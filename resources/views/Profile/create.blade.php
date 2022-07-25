@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <form action="{{ route('Profiles.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('Profile.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="form-floating mb-3">

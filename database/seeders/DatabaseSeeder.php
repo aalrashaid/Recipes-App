@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->command->info('Cuisine Seeder table seeded !,  created successfully.');
-        $this->command->info('Categories Seeder table seeded!,  created successfully.');
+        $this->command->info('Category Seeder table seeded!,  created successfully.');
         $this->command->info('Country Seeder table seeded!,  created successfully.');
         $this->command->info('Gender Seeder table seeded !,  created successfully.');
-        $this->command->info('Languages Seeder table seeded!,  created successfully.');
+        $this->command->info('Language Seeder table seeded!,  created successfully.');
     }
 }

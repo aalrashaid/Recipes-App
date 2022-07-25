@@ -4,21 +4,21 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
 <? php
  //
-        // $Thumbnails = new Thumbnails;
+        // $thumbnails = new thumbnails;
 
         // if ($request->hasFile('thumbnails')) {
         //     $name = $request->file('thumbnails')->getClientOriginalName();
         //     $size = $request->file('thumbnails')->getSize();
-        //     $path = $request->file('thumbnails')->storeAs('public/Recipes/Thumbnails', $name);
+        //     $path = $request->file('thumbnails')->storeAs('public/recipes/thumbnails', $name);
         // }
 
-        // $Thumbnails->user_id = auth()->user()->id;
+        // $thumbnails->user_id = auth()->user()->id;
 
-        // $Thumbnails->thumbnail = $name;
-        // $Thumbnails->size = $size;
-        // $Thumbnails->path = $path;
+        // $thumbnails->thumbnail = $name;
+        // $thumbnails->size = $size;
+        // $thumbnails->path = $path;
 
-        // $Thumbnails->save();
+        // $thumbnails->save();
 
         $recipes = recipes::create([
 
@@ -27,7 +27,7 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
             'cuisines_id' => $request->cuisines_id,
             'category_id' => $request->category_id,
             //[ 'thumbnail_id' => $request->thumbnails->id ],
-           // 'thumbnail_id' => $Thumbnails->id,
+           // 'thumbnail_id' => $thumbnails->id,
             //'thumbnail_id' => $request->thumbnails['id'],
             'title' => $request->title,
             'slug' => SlugService::createSlug(recipes::class, 'slug', $request->title),
@@ -50,5 +50,5 @@ use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Php;
 
         return redirect()->back();
 
-        //return redirect()->route('Recipes.index')->with('success', 'Recipes Create Successfully.');
+        //return redirect()->route('recipes.index')->with('success', 'recipes Create Successfully.');
 ?>

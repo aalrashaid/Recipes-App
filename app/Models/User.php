@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -61,20 +63,22 @@ class User extends Authenticatable
     }
 
     /**
-     * Relationship : One To One
-     * Get the profiles associated with the user.
+     * User model has one profile model.
+     *
+     * @return HasOne
      */
-    public function profiles()
+    public function profile() : HasOne
     {
-        return $this->hasOne(profiles::class);
+        return $this->hasOne(Profile::class);
     }
 
     /**
-     * Relationship : One To One
-     * Get the profiles associated with the user.
+     * User model has many recipe model.
+     *
+     * @return HasMany
      */
-    public function Recipes()
+    public function Recipes() : HasMany
     {
-        return $this->hasMany(Recipes::class);
+        return $this->hasMany(Recipe::class);
     }
 }

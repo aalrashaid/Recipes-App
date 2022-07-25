@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Languages;
+use App\Models\Language;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LanguagesPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Languages $languages)
+    public function view(User $user, Language $languages)
     {
         //
     }
@@ -48,10 +48,10 @@ class LanguagesPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Languages $languages)
+    public function update(User $user, Language $languages)
     {
         //
     }
@@ -60,10 +60,10 @@ class LanguagesPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Languages $languages)
+    public function delete(User $user, Language $languages)
     {
         //
     }
@@ -72,10 +72,10 @@ class LanguagesPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Languages $languages)
+    public function restore(User $user, Language $languages)
     {
         //
     }
@@ -84,10 +84,10 @@ class LanguagesPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Languages  $languages
+     * @param  \App\Models\Language  $languages
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Languages $languages)
+    public function forceDelete(User $user, Language $languages)
     {
         //
     }

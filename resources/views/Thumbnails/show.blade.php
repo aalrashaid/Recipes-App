@@ -8,7 +8,7 @@
 
 <div>
     <figure class="figure">
-        <img src="{{ url('storage/Recipes/Thumbnails/' . $thumbnails->thumbnail) }}" class="figure-img img-fluid rounded" alt="{{$thumbnails->thumbnail}}">
+        <img src="{{ url('storage/recipes/thumbnails/' . $thumbnails->thumbnail) }}" class="figure-img img-fluid rounded" alt="{{$thumbnails->thumbnail}}">
         <figcaption class="figure-caption">
             {{$thumbnails->path}}
             {{$thumbnails->size}}

@@ -21,7 +21,7 @@
 </div>
 @endif
 
-<form action="{{ route('Profile.update', $profiles->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('profile.update', $profiles->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     @method('PATCH')

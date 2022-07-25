@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreThumbnailsRequest;
 use App\Http\Requests\UpdateThumbnailsRequest;
-use App\Models\Thumbnails;
+use App\Models\Thumbnail;
 
 class ThumbnailsController extends Controller
 {
@@ -42,10 +42,10 @@ class ThumbnailsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Http\Response
      */
-    public function show(Thumbnails $thumbnails)
+    public function show(Thumbnail $thumbnails)
     {
         //
     }
@@ -53,10 +53,10 @@ class ThumbnailsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thumbnails $thumbnails)
+    public function edit(Thumbnail $thumbnails)
     {
         //
     }
@@ -65,10 +65,10 @@ class ThumbnailsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateThumbnailsRequest  $request
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateThumbnailsRequest $request, Thumbnails $thumbnails)
+    public function update(UpdateThumbnailsRequest $request, Thumbnail $thumbnails)
     {
         //
     }
@@ -76,10 +76,10 @@ class ThumbnailsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Thumbnails  $thumbnails
+     * @param  \App\Models\Thumbnail  $thumbnails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thumbnails $thumbnails)
+    public function destroy(Thumbnail $thumbnails)
     {
         //
     }
