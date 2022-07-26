@@ -78,12 +78,19 @@ class Recipe extends Model
                 $constraint->aspectRatio();
             })->save($target);
 
-            $thumbnail = $this->thumbnail()->updateOrCreate([
-                'user_id' => auth()->user()->id,
-                'name' => $filename,
-                'size' => $image->filesize(),
-                'path' => '/uploads/thumbnail/'
-            ]);
+            if (empty($this->attributes['thumbnail_id'])) {
+                $thumbnail = Thumbnail::create([
+                    'user_id' => auth()->user()->id,
+                    'name' => $filename,
+                    'size' => $image->filesize(),
+                    'path' => '/uploads/thumbnail/'
+                ]);
+            } else {
+                $thumbnail = Thumbnail::where('id', $this->attributes['thumbnail_id'])->first();
+                $thumbnail->name = $filename;
+                $thumbnail->size = $image->filesize();
+                $thumbnail->save();
+            }
 
             $this->attributes['thumbnail_id'] = $thumbnail->id;
         }
@@ -91,18 +98,20 @@ class Recipe extends Model
 
     protected function deleteThumbnail()
     {
-        if (File::exists($this->thubnail_path)) {
+        if (File::exists($this->thumbnail_path)) {
             File::delete($this->thumbnail_path);
         }
     }
 
     protected function getThumbnailPathAttribute(): ?string
     {
-        if (is_null($this->attributes['thumbnail_id'])) {
+        if (empty($this->attributes['thumbnail_id'])) {
             return null;
         }
 
-        return public_path('uploads/thumbnail/'.$this->thumbnail->name);
+        $thumbnail = Thumbnail::where('id', $this->attributes['thumbnail_id'])->first();
+
+        return public_path('/uploads/thumbnail/'.$thumbnail->name);
     }
 
     /**

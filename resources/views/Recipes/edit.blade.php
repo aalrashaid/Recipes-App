@@ -34,7 +34,7 @@
 
         <div class="mb-3">
             <label for="thumbnail" class="form-label @error('thumbnail_id') is-invalid @enderror">Thumbnail Recipe</label>
-            <input class="form-control" type="file" name="thumbnail" id="thumbnail">
+            <input class="form-control" type="file" name="thumbnail_id" id="thumbnail">
             @error('thumbnail_id')
             <span class="text-danger">{{$message}}</span>
             @enderror
