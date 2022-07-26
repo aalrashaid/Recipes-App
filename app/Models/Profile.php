@@ -85,7 +85,7 @@ class Profile extends Model
         }
     }
 
-    protected function getAvatarPathAttribute()
+    protected function getAvatarPathAttribute(): ?string
     {
         if ($this->attributes['avatar'] === 'default.webp') {
             return null;

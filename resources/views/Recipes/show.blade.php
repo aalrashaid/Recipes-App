@@ -4,92 +4,86 @@
 
 @section('content')
 
-    <h1> Show Recipe</h1>
-
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
+    <h1>Show Recipe</h1>
 
     <div>
-        <label for="floatingInputInvalid">Name Recipe:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->title }}</label>
+        <label>Name Recipe:</label>
+        {{ $data['model']->title }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Thumbnail Recipe:</label>
-        <p></p>
+        <label>Thumbnail Recipe:</label>
+        <img src="{{ asset('uploads/thumbnail/'.$data['model']->thumbnail->name) }}" width="100" height="100" alt="Recipe Thumbnail">
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Dsescription:</label>
-        <p>{{ $Recipes->dsescription }}</p>
+        <label>Description:</label>
+        {!! $data['model']->description !!}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Cuisine:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->cuisines_id }}</label>
+        <label>Cuisine:</label>
+        {{ $data['model']->cuisine->name }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Category:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->category_id }}</label>
+        <label>Category:</label>
+        {{ $data['model']->category->name }}
     </div>
 
     <div>
-        <iframe width="560" height="315" src="{{ $Recipes->youtubevideo }}" title="YouTube video player"
+        <iframe width="560" height="315" src="{{ $data['model']->youtube_video }}" title="YouTube video player"
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Method:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->method }}</label>
+        <label>Method:</label>
+        {{ $data['model']->method }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Difficlty:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->difficlty }}</label>
+        <label for="floatingInputInvalid">Difficulty:</label>
+        {{ $data['model']->difficulty }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Prep Time:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->preptime }}</label>
+        <label>Prep Time:</label>
+        {{ $data['model']->prep_time }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Cook Time:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->cooktime }}</label>
+        <label>Cook Time:</label>
+        {{ $data['model']->cook_time }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Total:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->total }}</label>
+        <label>Total:</label>
+        {{ $data['model']->total }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Servings:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->servings }}</label>
+        <label>Servings:</label>
+        {{ $data['model']->servings }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Yield:</label>
-        <label for="floatingInputInvalid">{{ $Recipes->yield }}</label>
+        <label>Yield:</label>
+       {{ $data['model']->yield }}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">Ingredients:</label>
-        <p>{{ $Recipes->ingredients }}</p>
+        <label>Ingredients:</label>
+        {!! $data['model']->ingredients !!}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">directions:</label>
-        <p>{{ $Recipes->directions }}</p>
+        <label>Directions:</label>
+        {!! $data['model']->directions !!}
     </div>
 
     <div>
-        <label for="floatingInputInvalid">nutritionFacts:</label>
-        <p>{{ $Recipes->nutritionFacts }}</p>
+        <label>NutritionFacts:</label>
+        {!! $data['model']->nutrition_facts !!}
     </div>
 @endsection

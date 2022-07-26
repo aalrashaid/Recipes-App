@@ -73,14 +73,5 @@ class CreateProfilesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('profiles');
-
-        //the drop forekey id
-        Schema::table('profiles', function (Blueprint $table) {
-            //the drop Foreing key
-            $table->dropForeign('profiles_user_id_foreign');
-            $table->dropForeign('profiles_country_id_foreign');
-            $table->dropForeign('profiles_language_id_foreign');
-            $table->dropForeign('profiles_genders_id_foreign');
-        });
     }
 }

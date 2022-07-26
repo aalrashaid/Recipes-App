@@ -31,15 +31,11 @@ class StoreProfilesRequest extends FormRequest
             'language_id' => ['required'],
             'genders_id' => ['required'],
             'fullName' => ['required'],
-            //'slug' => ['required','unique:slug'],
-
             'bio' => ['nullable','min:0','max:280'],
             'quotes' => ['nullable','min:0','max:280'],
-
             'birthday' => ['nullable','date','before:today'],
             'gender' => ['nullable'],
             'avatar' => ['nullable ','mimes:jpeg,jpg,png','max:1000'],
-
             'facebook' => ['nullable','url'],
             'linkedIn' => ['nullable','url'],
             'instagram' => ['nullable','url'],

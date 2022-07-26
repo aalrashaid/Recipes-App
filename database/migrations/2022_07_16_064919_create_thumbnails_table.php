@@ -20,20 +20,17 @@ class CreateThumbnailsTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
-
-            //$table->unsignedBigInteger('user_id')->unsigned();
-            $table->foreignId('user_id')->references('id')->on('users')->comment('foreign key tables users');
-
-            // $table->unsignedBigInteger('recipes_ID')->unsigned();
-            //  $table->foreign('recipes_ID')->references('id')->on('recipes')->comment('foreign key tables users');
-            // $table->string('slug')->nullable()->unique()->comment('foreign key tables users');
-            $table->string('thumbnail')->nullable()->comment('foreign key tables users');
-            $table->string('size')->nullable()->comment('foreign key tables users');
-            $table->string('path')->nullable()->comment('foreign key tables users');
-            //$table->string('images')->nullable()->comment('foreign key tables users');
-            // $table->string('alt')->nullable()->comment('foreign key tables users');
+            $table->unsignedBigInteger('user_id');
+            $table->string('name')->nullable();
+            $table->string('size')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -45,12 +42,5 @@ class CreateThumbnailsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('thumbnails');
-
-        //the drop forekey id
-        Schema::table('thumbnails', function (Blueprint $table) {
-            //the drop Foreing key
-            $table->dropForeign('recipes_user_id_foreign');
-
-        });
     }
 }

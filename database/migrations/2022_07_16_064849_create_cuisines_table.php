@@ -20,10 +20,9 @@ class CreateCuisinesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
-            $table->string('name')->nullable()->comment('foreign key tables users');
-            //  $table->string('slug')->nullable()->comment('foreign key tables users');
-            $table->string('slug')->nullable()->unique()->comment('foreign key tables users');
-            $table->text('description')->nullable()->comment('foreign key tables users');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->timestamps();
 
         });

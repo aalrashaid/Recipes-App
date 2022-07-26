@@ -6,38 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class Recipe extends Model
 {
     use HasFactory;
     use Sluggable;
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'recipes';
-
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
-    protected $primaryKey = 'id';
-
-    /**
-     * Indicates if the model's ID is auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = true;
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -47,22 +25,22 @@ class Recipe extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'cuisines_id',
+        'cuisine_id',
         'thumbnail_id',
         'title',
         'slug',
-        'dsescription',
-        'youtubevideo',
-        'method',
-        'difficlty',
-        'preptime',
-        'cooktime',
+        'description',
+        'youtube_video',
+        'recipe_method',
+        'difficulty',
+        'prep_time',
+        'cook_time',
         'total',
         'servings',
         'yield',
         'ingredients',
         'directions',
-        'nutritionFacts'
+        'nutrition_facts'
     ];
 
     /**
@@ -79,39 +57,91 @@ class Recipe extends Model
         ];
     }
 
+    public function delete()
+    {
+        $this->deleteThumbnail();
+        parent::delete();
+    }
+
+    public function setThumbnailIdAttribute($file)
+    {
+        if ($file) {
+            if (!empty($this->attributes['thumbnail_id'])) {
+                $this->deleteThumbnail();
+            }
+
+            $filename = rand().date('dmyHis').'.webp';
+            $image = Image::make($file)->encode('webp');
+            $target = public_path('/uploads/thumbnail/'.$filename);
+
+            $image->resize('400', '400', function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($target);
+
+            $thumbnail = $this->thumbnail()->updateOrCreate([
+                'user_id' => auth()->user()->id,
+                'name' => $filename,
+                'size' => $image->filesize(),
+                'path' => '/uploads/thumbnail/'
+            ]);
+
+            $this->attributes['thumbnail_id'] = $thumbnail->id;
+        }
+    }
+
+    protected function deleteThumbnail()
+    {
+        if (File::exists($this->thubnail_path)) {
+            File::delete($this->thumbnail_path);
+        }
+    }
+
+    protected function getThumbnailPathAttribute(): ?string
+    {
+        if (is_null($this->attributes['thumbnail_id'])) {
+            return null;
+        }
+
+        return public_path('uploads/thumbnail/'.$this->thumbnail->name);
+    }
+
     /**
-     * Relationship : belongsTo user
-     * Get the user that owns the profiles.
+     * Recipe model has one user model.
+     *
+     * @return BelongsTo
      */
-    public function user()
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * Relationship : belongsTo user
-     * Get the user that owns the profiles.
+     * Recipe model has one thumbnail model.
+     *
+     * @return HasOne
      */
-    public function Thumbnails()
+    public function thumbnail() : HasOne
     {
-        return $this->belongsTo(Thumbnail::class);
+        return $this->hasOne(Thumbnail::class, 'id', 'thumbnail_id');
     }
 
-     /**
-     * Relationship : belongsTo user
-     * Get the user that owns the profiles.
+    /**
+     * Recipe model has one cuisine model.
+     *
+     * @return HasOne
      */
-    public function Cuisines()
+    public function cuisine(): HasOne
     {
-        return $this->belongsTo(Cuisine::class);
+        return $this->hasOne(Cuisine::class, 'id', 'cuisine_id');
     }
 
-     /**
-     * Relationship : belongsTo user
-     * Get the user that owns the profiles.
+    /**
+     * Recipe model has one category model.
+     *
+     * @return HasOne
      */
-    public function Categories()
+    public function category(): HasOne
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasOne(Category::class, 'id', 'category_id');
     }
 }

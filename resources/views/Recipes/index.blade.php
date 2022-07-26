@@ -5,19 +5,9 @@
 @section('content')
     <div>
 
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+        @if (session('message'))
+            <div class="alert alert-{{ session('class') }}">
+                {{ session('message') }}
             </div>
         @endif
 
@@ -28,12 +18,13 @@
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Cuisines</th>
-                    <th scope="col">category</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
 
-                @foreach ($Recipes as $recipe)
+                @foreach ($data['recipes'] as $recipe)
                     <tr>
                         <th scope="row">{{ $recipe->id }}</th>
                         <td>
@@ -41,48 +32,34 @@
                         </td>
 
                         <td>
-                            {{ $recipe->dsescription }}
+                            {!! limited_text($recipe->description, 15) !!}
                         </td>
 
-                        {{-- @foreach ($Cuisine as $key => $cuisine)
-                            <td>
-                                <label name="cuisines_id" id="cuisines_id" value="{{ $key }}"
-                                    @if ($recipe->cuisines_id == $cuisine->id) selected @endif>
-                                    {{ $cuisine->name }}
-                                </label>
-                            </td>
-                        @endforeach --}}
+                        <td>
+                            {{ $recipe->cuisine->name }}
+                        </td>
 
-                        {{-- @foreach ( $Category as $key => $category)
-                            <td>
-                                <label name="category_id" id="category_id" value="{{ $key }}"
-                                    @if ($recipe->category_id == $category->id) selected @endif>
-                                    {{ $category->name }}
-                                </label>
-                            </td>
-                        @endforeach --}}
+                        <td>
+                            {{ $recipe->category->name }}
+                        </td>
+
+                        <td>
+                            <a class="btn btn-outline-dark" href="{{ route('user.recipes.show', $recipe->id) }}" role="button">Show</a>
+                            <a class="btn btn-outline-warning" href="{{ route('user.recipes.edit', $recipe->id) }}" role="button">Edit</a>
+                            <form action="{{ route('user.recipes.destroy', $recipe->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
 
                     </tr>
                 @endforeach
 
             </tbody>
         </table>
-    </div>
-    <div>
-        {{-- <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav> --}}
 
-        {{-- {{ $paginator->links('bootstrap-4', ['foo' => 'bar']) }} --}}
+        <a class="btn btn-outline-dark" href="{{ route('user.recipes.create') }}" role="button">Create</a>
+
     </div>
 @endsection

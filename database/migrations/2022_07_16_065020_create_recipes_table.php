@@ -20,34 +20,50 @@ class CreateRecipesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedBigInteger('cuisine_id')->nullable();
+            $table->unsignedBigInteger('thumbnail_id')->nullable();
 
-            //$table->unsignedBigInteger('user_ID')->unsigned();
-            $table->foreignId('user_id')->references('id')->on('users')->comment('foreign key tables users');
-
-            //$table->unsignedBigInteger('category_id')->unsigned();
-            $table->foreignId('category_id')->references('id')->on('categories')->comment('foreign key tables categories');
-
-            //$table->unsignedBigInteger('cuisines_id')->unsigned();
-            $table->foreignId('cuisines_id')->references('id')->on('cuisines')->comment('foreign key tables cuisines');
-
-            // $table->unsignedBigInteger('thumbnail_id')->unsigned();
-            $table->foreignId('thumbnail_id')->references('id')->on('thumbnails')->comment('foreign key tables photos');
-
-            $table->string('title')->nullable()->comment('foreign key tables users');
-            $table->string('slug')->nullable()->unique()->comment('foreign key tables users');
-            $table->text('dsescription')->nullable()->comment('foreign key tables users');
-            $table->string('youtubevideo')->nullable()->comment('foreign key tables users');
-            $table->string('method')->nullable()->comment('foreign key tables users');
-            $table->string('difficlty')->nullable()->comment('foreign key tables users');
-            $table->string('preptime')->nullable()->comment('foreign key tables users');
-            $table->string('cooktime')->nullable()->comment('foreign key tables users');
-            $table->string('total')->nullable()->comment('foreign key tables users');
-            $table->string('servings')->nullable()->comment('foreign key tables users');
-            $table->string('yield')->nullable()->comment('foreign key tables users');
-            $table->text('ingredients')->nullable()->comment('foreign key tables users');
-            $table->text('directions')->nullable()->comment('foreign key tables users');
-            $table->text('nutritionFacts')->nullable()->comment('foreign key tables users');
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable()->unique();
+            $table->text('description')->nullable();
+            $table->string('youtube_video')->nullable();
+            $table->string('recipe_method')->nullable();
+            $table->string('difficulty')->nullable();
+            $table->string('prep_time')->nullable();
+            $table->string('cook_time')->nullable();
+            $table->string('total')->nullable();
+            $table->string('servings')->nullable();
+            $table->string('yield')->nullable();
+            $table->text('ingredients')->nullable();
+            $table->text('directions')->nullable();
+            $table->text('nutrition_facts')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+            $table->foreign('cuisine_id')
+                ->references('id')
+                ->on('cuisines')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
+            $table->foreign('thumbnail_id')
+                ->references('id')
+                ->on('thumbnails')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
         });
     }
 
@@ -59,14 +75,5 @@ class CreateRecipesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('recipes');
-
-        //the drop forekey id
-        Schema::table('recipes', function (Blueprint $table) {
-            //the drop Foreing key
-            $table->dropForeign('recipes_user_id_foreign');
-            $table->dropForeign('recipes_cuisines_id_foreign');
-            $table->dropForeign('recipes_category_id_foreign');
-            $table->dropForeign('recipes_thumbnail_id_foreign');
-        });
     }
 }

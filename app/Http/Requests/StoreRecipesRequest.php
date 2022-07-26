@@ -11,7 +11,7 @@ class StoreRecipesRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,26 +21,25 @@ class StoreRecipesRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //'cuisines_id' => 'required',
-            //'thumbnails_id' => 'required',
-            //'category_id' => 'required',
-            'title' => ['required'],
-            // d 'slug' => ['required','unique:slug'],
-            'dsescription' => ['required'],
-            'youtubevideo' => ['required'],
-            'method' => ['required'],
-            'difficlty' => ['required'],
-            'preptime' => ['required'],
-            'cooktime' => ['required'],
+            'cuisine_id' => ['required', 'integer', 'exists:cuisines,id'],
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'thumbnail_id' => ['required', 'file', 'max:10240', 'mimes:jpg,jpeg,png,bmp,tiff'],
+            'title' => ['required', 'min:2', 'max:255'],
+            'description' => ['required', 'min:4'],
+            'youtube_video' => ['required'],
+            'recipe_method' => ['required'],
+            'difficulty' => ['required'],
+            'prep_time' => ['required'],
+            'cook_time' => ['required'],
             'total' => ['required'],
             'servings' => ['required'],
             'yield' => ['required'],
             'ingredients' => ['required'],
             'directions' => ['required'],
-            'nutritionFacts' => ['required'],
+            'nutrition_facts' => ['required']
         ];
     }
 
@@ -49,53 +48,23 @@ class StoreRecipesRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
-            // 'user_id.required' => 'A user_id is required',
-            //'cuisines_id.required' => 'A cuisines is required',
-            //'photo_id.required' => 'A photo is required',
-            //'category_id.required' => 'A category is required',
+            'cuisine_id.required' => 'A cuisine is required',
+            'category_id.required' => 'A category is required',
             'title.required' => 'A title is required',
-            'slug.required' => 'A slug is required',
-            'dsescription.required' => 'A dsescription is required',
-            'youtubevideo.required' => 'A youtube video is required',
-            'method.required' => 'A method is required',
-            'difficlty.required' => 'A difficlty user is required',
-            'preptime.required' => 'A prep time is required',
-            'cooktime.required' => 'A cook time is required',
+            'description.required' => 'A description is required',
+            'youtube_video.required' => 'A youtube video is required',
+            'recipe_method.required' => 'A method is required',
+            'difficulty.required' => 'A difficulty user is required',
+            'prep_time.required' => 'A prep time is required',
+            'cook_time.required' => 'A cook time is required',
             'total.required' => 'A total is required',
             'yield.required' => 'A yield is required',
             'ingredients.required' => 'A ingredients is required',
             'directions.required' => 'A directions is required',
-            'nutritionFacts.required' => 'A nutritionFacts is required',
+            'nutrition_facts.required' => 'A nutritionFacts is required'
         ];
-    }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            //'cuisines_id' => '',
-            //'photo_id' => '',
-            //'category_id' => '',
-            'title' => 'Titles ',
-            'slug' => 'slug text',
-            'dsescription' => 'text',
-            'youtubevideo' => '',
-            'method' => '',
-            'difficlty' => '',
-            'cooktime' => '',
-            'total' => '',
-            'yield' => '',
-            'ingredients' => 'texts',
-            'directions' => 'text',
-            'nutritionFacts' => 'text',
-        ];
-
     }
 }

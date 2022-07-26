@@ -30,11 +30,6 @@
             <label for="fullName">Full Name:</label>
         </div>
 
-        {{-- <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="slug" id="slug" placeholder="slug">
-            <label for="slug">Slug Name:</label>
-        </div> --}}
-
         <div class="form-floating mb-3">
             <textarea class="form-control" placeholder="Leave a bio here" name="bio" id="bio" style="height: 100px"></textarea>
             <label for="bio">Bio:</label>
