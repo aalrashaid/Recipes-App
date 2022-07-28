@@ -57,12 +57,20 @@ class Recipe extends Model
         ];
     }
 
+    /**
+     * Delete function to remove recipe model and thumbnail file if exists.
+     *
+     */
     public function delete()
     {
         $this->deleteThumbnail();
         parent::delete();
     }
 
+    /**
+     * Uploading thumbnail and save it to the uploads/thumbnail folder.
+     *
+     */
     public function setThumbnailIdAttribute($file)
     {
         if ($file) {
@@ -96,6 +104,10 @@ class Recipe extends Model
         }
     }
 
+    /**
+     * Delete thumbnail file if exists.
+     *
+     */
     protected function deleteThumbnail()
     {
         if (File::exists($this->thumbnail_path)) {
@@ -103,6 +115,10 @@ class Recipe extends Model
         }
     }
 
+    /**
+     * Get thumbnail path attribute.
+     *
+     */
     protected function getThumbnailPathAttribute(): ?string
     {
         if (empty($this->attributes['thumbnail_id'])) {
