@@ -53,12 +53,20 @@ class Profile extends Model
         ];
     }
 
+    /**
+     * Delete function to remove profile model and avatar file if exists.
+     *
+     */
     public function delete()
     {
         $this->deleteAvatar();
         parent::delete();
     }
 
+    /**
+     * Uploading avatar and save it to the uploads/user/avatar folder.
+     *
+     */
     public function setAvatarAttribute($file)
     {
         if ($file) {
@@ -78,6 +86,10 @@ class Profile extends Model
         }
     }
 
+    /**
+     * Delete avatar file if exists.
+     *
+     */
     protected function deleteAvatar()
     {
         if (File::exists($this->avatar_path)) {
@@ -85,6 +97,10 @@ class Profile extends Model
         }
     }
 
+    /**
+     * Get avatar path attribute.
+     *
+     */
     protected function getAvatarPathAttribute(): ?string
     {
         if ($this->attributes['avatar'] === 'default.webp') {
