@@ -14,7 +14,21 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8';
+            $table->collation = 'utf8_general_ci';
+
             $table->id();
+            $table->foreignId('user_id')->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('recipes_id')->references('id')
+                ->on('recipes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }

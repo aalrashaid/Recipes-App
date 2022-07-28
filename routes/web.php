@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\RecipesController;
+use App\Http\Controllers\ReviewsController;
 use App\Models\Recipe;
 
 /*
