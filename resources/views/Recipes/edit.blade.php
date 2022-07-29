@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form action="{{ route('user.recipes.update', $data['model']->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('user.Recipes.update', $data['model']->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 

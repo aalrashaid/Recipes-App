@@ -36,6 +36,6 @@ Route::group(['middleware' => ['auth'], 'as' => 'user.'], function () {
     Route::get('edit-profile', [ProfilesController::class, 'editProfile'])->name('profile.edit');
     Route::resource('Recipes', RecipesController::class);
 
-    Route::resource('Recipes/{id}/Reviews', ReviewsController::class)->shallow();
+    //Route::resource('Recipes/{id}/Reviews', ReviewsController::class)->shallow();
 });
 

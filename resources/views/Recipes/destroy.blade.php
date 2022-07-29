@@ -17,7 +17,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('recipes.destroy', $recipes->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('Recipes.destroy', $recipes->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('DELETE')
         <div class="form-floating mb-3">

@@ -44,9 +44,9 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-outline-dark" href="{{ route('user.recipes.show', $recipe->id) }}" role="button">Show</a>
-                            <a class="btn btn-outline-warning" href="{{ route('user.recipes.edit', $recipe->id) }}" role="button">Edit</a>
-                            <form action="{{ route('user.recipes.destroy', $recipe->id) }}" method="POST">
+                            <a class="btn btn-outline-dark" href="{{ route('user.Recipes.show', $recipe->id) }}" role="button">Show</a>
+                            <a class="btn btn-outline-warning" href="{{ route('user.Recipes.edit', $recipe->id) }}" role="button">Edit</a>
+                            <form action="{{ route('user.Recipes.destroy', $recipe->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -59,7 +59,7 @@
             </tbody>
         </table>
 
-        <a class="btn btn-outline-dark" href="{{ route('user.recipes.create') }}" role="button">Create</a>
+        <a class="btn btn-outline-dark" href="{{ route('user.Recipes.create') }}" role="button">Create</a>
 
     </div>
 @endsection

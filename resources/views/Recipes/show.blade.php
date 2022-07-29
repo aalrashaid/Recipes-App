@@ -86,4 +86,23 @@
         <label>NutritionFacts:</label>
         {!! $data['model']->nutrition_facts !!}
     </div>
+
+    <hr>
+    <div>
+        <h1>Reviews</h1>
+        <h3></h3>
+        <div>
+            <form action="" method="post">
+                <div class="form-floating mb-3">
+                    <textarea class="form-control mb-3  @error('Comments') is-invalid @enderror" name="Comments" id="Comments"  placeholder="Comments"
+                        style="height: 100px">{!! old('Comments') !!}</textarea>
+                    <label for="Comments">Comments:</label>
+                    @error('Comments')
+                        <span class="text-danger">{{$message}}</span>
+                    @enderror
+                    <button type="submit" value="Submit" class="btn btn-dark mb-3">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection

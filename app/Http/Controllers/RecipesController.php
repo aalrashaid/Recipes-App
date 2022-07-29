@@ -24,7 +24,7 @@ class RecipesController extends Controller
             ->with(['cuisine', 'category'])
             ->get();
 
-        return view('recipes.index', compact('data'));
+        return view('Recipes.index', compact('data'));
     }
 
     /**
@@ -37,7 +37,7 @@ class RecipesController extends Controller
         $data['cuisines'] = Cuisine::get();
         $data['categories'] = Category::get();
 
-        return view('recipes.create', compact('data'));
+        return view('Recipes.create', compact('data'));
     }
 
     /**
@@ -54,7 +54,7 @@ class RecipesController extends Controller
                 ->create($request->except('csrf_token'));
         });
 
-        return redirect()->route('user.recipes.index')->with([
+        return redirect()->route('user.Recipes.index')->with([
             'class' => 'success',
             'message' => 'Recipe successfully created'
         ]);
@@ -74,7 +74,7 @@ class RecipesController extends Controller
         $data['cuisines'] = Cuisine::get();
         $data['categories'] = Category::get();
 
-        return view('recipes.show', compact('data'));
+        return view('Recipes.show', compact('data'));
     }
 
     /**
@@ -91,7 +91,7 @@ class RecipesController extends Controller
         $data['cuisines'] = Cuisine::get();
         $data['categories'] = Category::get();
 
-        return view('recipes.edit', compact('data'));
+        return view('Recipes.edit', compact('data'));
     }
 
     /**
@@ -111,7 +111,7 @@ class RecipesController extends Controller
             $model->update($request->except('csrf_token'));
         });
 
-        return redirect()->route('user.recipes.index')->with([
+        return redirect()->route('user.Recipes.index')->with([
             'class' => 'success',
             'message' => 'Recipe successfully updated'
         ]);
