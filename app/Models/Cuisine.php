@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cuisine extends Model
 {
@@ -65,8 +66,18 @@ class Cuisine extends Model
      * Relationship : One To One
      * Get the profiles associated with the user.
      */
-    public function Recipes()
+    // public function Recipes()
+    // {
+    //     return $this->hasMany(Recipe::class);
+    // }
+
+    /**
+     * Cuisine model has one recipe model.
+     *
+     * @return BelongsTo
+     */
+    public function recipe(): BelongsTo
     {
-        return $this->hasMany(Recipe::class);
+        return $this->belongsTo(Recipe::class);
     }
 }
