@@ -34,6 +34,8 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['auth'], 'as' => 'user.'], function () {
     Route::resource('profile', ProfilesController::class)->only(['index', 'update']);
     Route::get('edit-profile', [ProfilesController::class, 'editProfile'])->name('profile.edit');
-    Route::resource('recipes', RecipesController::class);
+    Route::resource('Recipes', RecipesController::class);
+
+    Route::resource('Recipes/{id}/Reviews', ReviewsController::class)->shallow();
 });
 

@@ -57,4 +57,14 @@ class Reviews extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Thumbnail model has one recipe model.
+     *
+     * @return BelongsTo
+     */
+    public function recipe(): BelongsTo
+    {
+        return $this->belongsTo(Recipe::class);
+    }
 }

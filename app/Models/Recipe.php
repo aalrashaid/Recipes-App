@@ -169,4 +169,14 @@ class Recipe extends Model
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
+
+    /**
+     * Recipe model has one category model.
+     * * @return HasOne
+     * 
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class, 'id', 'recipes_id');
+    }
 }
