@@ -13,7 +13,7 @@ class UpdateReviewsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,20 @@ class UpdateReviewsRequest extends FormRequest
     {
         return [
             //
+            'comments' => ['required', 'min:4', 'max:255']
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'comments' => 'A comments is required',
+
         ];
     }
 }

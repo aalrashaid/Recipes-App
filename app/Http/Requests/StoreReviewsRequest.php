@@ -13,7 +13,7 @@ class StoreReviewsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,27 @@ class StoreReviewsRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+
+            //'user_id' => ['required', 'integer', 'exists:cuisines,id'],
+            //'recipes_id' => ['required', 'integer', 'exists:cuisines,id'],
+            'comments' => ['required', 'min:4', 'max:255']
+
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'comments' => 'A comments is required',
+            
         ];
     }
 }

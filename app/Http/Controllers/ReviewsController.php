@@ -6,6 +6,8 @@ use App\Http\Requests\StoreReviewsRequest;
 use App\Http\Requests\UpdateReviewsRequest;
 use App\Models\Reviews;
 
+use App\Models\Recipe;
+
 class ReviewsController extends Controller
 {
     /**
@@ -26,6 +28,10 @@ class ReviewsController extends Controller
     public function create()
     {
         //
+        $Recipes = Recipe::all();
+
+        return view('Recipes/{id}/Reviews', compact('$Recipes'));
+
     }
 
     /**
@@ -37,6 +43,26 @@ class ReviewsController extends Controller
     public function store(StoreReviewsRequest $request)
     {
         //
+        $Reviews = new Reviews;
+
+        $Reviews->user_id = auth()->user()->id;
+        $Reviews->recipes_id = $request->recipes_id;
+        $Reviews->comments = $request->comments;
+
+        dd($Reviews);
+        // $Reviews = Reviews::Create(
+
+        //     ['comments' => $request->comments]
+
+        // );
+        // dd($Reviews);
+
+        $Reviews->save();
+        //user.
+        return redirect()->route('user.Recipes.index')->with([
+            'class' => 'success',
+            'message' => 'Recipe successfully created'
+        ]);
     }
 
     /**
