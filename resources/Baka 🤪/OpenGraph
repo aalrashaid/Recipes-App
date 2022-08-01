@@ -1,0 +1,113 @@
+<!-- COMMON TAGS -->
+<meta charset="utf-8">
+<title>website</title>
+<!-- Search Engine -->
+<meta name="description" content="website">
+<meta name="image" content="website.com/imgs">
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="website">
+<meta itemprop="description" content="website">
+<meta itemprop="image" content="website.com/imgs">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="website">
+<meta name="twitter:description" content="website">
+<meta name="twitter:site" content="@ Publisher’s">
+<meta name="twitter:creator" content="@ Publisher’s">
+<meta name="twitter:image:src" content="www. Publisher’s.com/imgs">
+<meta name="twitter:player" content="www.youtube.com">
+<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+<meta name="og:title" content="website">
+<meta name="og:description" content="website">
+<meta name="og:image" content="website.com/brands.jps">
+<meta name="og:url" content="website.com">
+<meta name="og:site_name" content="website">
+<meta name="og:locale" content="en_US">
+<meta name="og:video" content="website.com/video.pm4">
+<meta name="fb:admins" content="adminid">
+<meta name="fb:app_id" content="fb_appid">
+<meta name="og:type" content="website">
+-----
+<!-- COMMON TAGS -->
+<meta charset="utf-8">
+<title>website</title>
+<!-- Search Engine -->
+<meta name="description" content="website">
+<meta name="image" content="website.com/imgs">
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="website">
+<meta itemprop="description" content="website">
+<meta itemprop="image" content="website.com/imgs">
+<!-- Mobile App for iOS & Android -->
+<meta name="apple-itunes-app" content="app-id=111111111">
+<meta name="google-play-app" content="app-id=ru.google.com/">
+<!-- Twitter -->
+<meta name="twitter:card" content="app">
+<meta name="twitter:title" content="website">
+<meta name="twitter:description" content="website">
+<meta name="twitter:site" content="@ Publisher’s">
+<meta name="twitter:creator" content="@ Publisher’s">
+<meta name="twitter:image:src" content="www. Publisher’s.com/imgs">
+<meta name="twitter:player" content="www.youtube.com">
+<!-- Twitter - Mobile App (iOS & Android) -->
+<meta name="twitter:app:id:iphone" content="111111111">
+<meta name="twitter:app:name:iphone" content="111111111">
+<meta name="twitter:app:url:iphone" content="app.com/1112">
+<meta name="twitter:app:id:googleplay" content="ru.google.com/">
+<meta name="twitter:app:name:googleplay" content="web">
+<meta name="twitter:app:url:googleplay" content="wwww.apps.com">
+<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+<meta name="og:title" content="website">
+<meta name="og:description" content="website">
+<meta name="og:image" content="website.com/brands.jps">
+<meta name="og:url" content="website.com">
+<meta name="og:site_name" content="website">
+<meta name="og:locale" content="en_US">
+<meta name="og:video" content="website.com/video.pm4">
+<meta name="fb:admins" content="adminid">
+<meta name="fb:app_id" content="fb_appid">
+<meta name="og:type" content="website">
+<!-- Open Graph - Mobile App (iOS & Android) -->
+<meta name="al:ios:app_store_id" content="111111111">
+<meta name="al:ios:app_name" content="111111111">
+<meta name="al:ios:url" content="app.com/1112">
+<meta name="al:android:package" content="ru.google.com/">
+<meta name="al:android:app_name" content="web">
+<meta name="al:android:url" content="wwww.apps.com">
+-----
+<!-- COMMON TAGS -->
+<meta charset="utf-8">
+<title>website</title>
+<!-- Search Engine -->
+<meta name="description" content="website">
+<meta name="image" content="website.com/imgs">
+<!-- Schema.org for Google -->
+<meta itemprop="name" content="website">
+<meta itemprop="description" content="website">
+<meta itemprop="image" content="website.com/imgs">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="website">
+<meta name="twitter:description" content="website">
+<meta name="twitter:site" content="@ Publisher’s">
+<meta name="twitter:creator" content="@ Publisher’s">
+<meta name="twitter:image:src" content="www. Publisher’s.com/imgs">
+<meta name="twitter:player" content="www.youtube.com">
+<!-- Twitter - Article -->
+<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+<meta name="og:title" content="website">
+<meta name="og:description" content="website">
+<meta name="og:image" content="website.com/brands.jps">
+<meta name="og:url" content="website.com">
+<meta name="og:site_name" content="website">
+<meta name="og:locale" content="en_US">
+<meta name="og:video" content="website.com/video.pm4">
+<meta name="fb:admins" content="adminid">
+<meta name="fb:app_id" content="fb_appid">
+<meta name="og:type" content="article">
+<!-- Open Graph - Article -->
+<meta name="article:section" content="foods">
+<meta name="article:published_time" content="2022-9-10t19:00:00+3:00">
+<meta name="article:author" content="Jony ">
+<meta name="article:tag" content="foods ">
+<meta name="article:modified_time" content="2022-9-10t19:00:00+3:00">
