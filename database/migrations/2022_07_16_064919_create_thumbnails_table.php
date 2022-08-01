@@ -21,10 +21,15 @@ class CreateThumbnailsTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger('user_id');
+            // $table->foreignId('user_id')->references('id')
+            // ->on('users')
+            // ->onUpdate('cascade')
+            //     ->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('size')->nullable();
             $table->string('path')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')

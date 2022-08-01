@@ -20,6 +20,8 @@ class CreateCountriesTable extends Migration
             $table->collation = 'utf8_general_ci';;
 
             $table->unsignedInteger('id', true);
+            // $table->id();
+
             $table->string('iso')->nullable();
             $table->string('name')->nullable();
             $table->string('nicename')->nullable();
@@ -27,6 +29,7 @@ class CreateCountriesTable extends Migration
             $table->string('numbercode')->nullable();
             $table->string('phonecode')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

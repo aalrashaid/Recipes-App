@@ -20,10 +20,31 @@ class CreateRecipesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
+
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('category_id')->nullable();
             $table->unsignedBigInteger('cuisine_id')->nullable();
             $table->unsignedBigInteger('thumbnail_id')->nullable();
+
+            // $table->foreignId('user_id')->references('id')
+            // ->on('users')
+            // ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+
+            // $table->foreignId('category_id')->references('id')
+            // ->on('categories')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+
+            // $table->foreignId('cuisine_id')->references('id')
+            // ->on('categories')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+
+            // $table->foreignId('thumbnail_id')->references('id')
+            // ->on('thumbnails')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
 
             $table->string('title')->nullable();
             $table->string('slug')->nullable()->unique();
@@ -40,6 +61,7 @@ class CreateRecipesTable extends Migration
             $table->text('directions')->nullable();
             $table->text('nutrition_facts')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')
@@ -60,7 +82,7 @@ class CreateRecipesTable extends Migration
                 ->onDelete('set null');
 
             $table->foreign('thumbnail_id')
-                ->references('id')
+            ->references('id')
                 ->on('thumbnails')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
@@ -75,5 +97,14 @@ class CreateRecipesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('recipes');
+
+        //the drop forekey id
+        Schema::table('recipes', function (Blueprint $table) {
+            //the drop Foreing key
+            $table->dropForeign('recipes_user_id_foreign');
+            $table->dropForeign('recipes_cuisines_id_foreign');
+            $table->dropForeign('recipes_category_id_foreign');
+            $table->dropForeign('recipes_thumbnail_id_foreign');
+        });
     }
 }

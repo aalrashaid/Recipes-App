@@ -19,8 +19,10 @@ class CreateGendersTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->unsignedTinyInteger('id', true);
+            // $table->id();
             $table->string('name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

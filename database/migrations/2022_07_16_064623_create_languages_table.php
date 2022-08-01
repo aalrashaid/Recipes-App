@@ -20,9 +20,11 @@ class CreateLanguagesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->unsignedInteger('id', true);
+            // $table->id();
             $table->string('name')->nullable();
             $table->string('iso_639-1')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

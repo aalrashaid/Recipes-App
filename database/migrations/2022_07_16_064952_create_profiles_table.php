@@ -20,10 +20,31 @@ class CreateProfilesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
+
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('country_id')->nullable();
             $table->unsignedInteger('language_id')->nullable();
             $table->unsignedTinyInteger('gender_id')->nullable();
+
+            // $table->foreignId('user_id')->references('id')
+            // ->on('users')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+
+            // $table->foreignId('country_id')->references('id')
+            // ->on('countries')
+            // ->onUpdate('cascade')
+            //     ->onDelete('cascade');
+
+            // $table->foreignId('language_id')->references('id')
+            // ->on('languages')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+
+            // $table->foreignId('gender_id')->references('id')
+            // ->on('genders')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
 
             $table->string('full_name')->nullable();
             $table->string('slug')->nullable()->unique();
@@ -62,6 +83,7 @@ class CreateProfilesTable extends Migration
                 ->onDelete('set null');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -73,5 +95,14 @@ class CreateProfilesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('profiles');
+
+        //the drop forekey id
+        Schema::table('profiles', function (Blueprint $table) {
+            //the drop Foreing key
+            $table->dropForeign('profiles_user_id_foreign');
+            $table->dropForeign('profiles_country_id_foreign');
+            $table->dropForeign('profiles_language_id_foreign');
+            $table->dropForeign('profiles_genders_id_foreign');
+        });
     }
 }

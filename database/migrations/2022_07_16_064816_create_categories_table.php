@@ -20,10 +20,12 @@ class CreateCategoriesTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->unsignedInteger('id', true);
+            // $table->id();
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
