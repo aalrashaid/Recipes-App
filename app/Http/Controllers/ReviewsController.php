@@ -8,6 +8,10 @@ use App\Models\Reviews;
 
 use App\Models\Recipe;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
 class ReviewsController extends Controller
 {
     /**
@@ -30,7 +34,7 @@ class ReviewsController extends Controller
         //
         $Recipes = Recipe::all();
 
-        return view('Recipes/{id}/Reviews', compact('$Recipes'));
+        return view('Reviews.create', compact('$Recipes'));
 
     }
 
@@ -39,17 +43,24 @@ class ReviewsController extends Controller
      *
      * @param  \App\Http\Requests\StoreReviewsRequest  $request
      * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(StoreReviewsRequest $request)
+    public function store(StoreReviewsRequest $request): RedirectResponse
     {
         //
-        $Reviews = new Reviews;
+        DB::transaction(function () use ($request) {
+            auth()->user()->Reviews()->create($request->except('csrf_token'));
+        });
 
-        $Reviews->user_id = auth()->user()->id;
-        $Reviews->recipes_id = $request->recipes_id;
-        $Reviews->comments = $request->comments;
+        // $Reviews = new Reviews;
 
-        dd($Reviews);
+        // $Reviews->user_id = auth()->user()->id;
+        // // $Reviews->recipes_id = $Recipe->id;
+        // $Recipe = Recipe::find($request->get('recipes_id'));
+        // $Reviews->comments = $request->comments;
+
+        //dd($Reviews);
+
         // $Reviews = Reviews::Create(
 
         //     ['comments' => $request->comments]
@@ -57,7 +68,9 @@ class ReviewsController extends Controller
         // );
         // dd($Reviews);
 
-        $Reviews->save();
+        // $Reviews->save();
+
+        //dd($Reviews);
         //user.
         return redirect()->route('user.Recipes.index')->with([
             'class' => 'success',
@@ -74,6 +87,8 @@ class ReviewsController extends Controller
     public function show(Reviews $reviews)
     {
         //
+
+        return view('Recipes.show');
     }
 
     /**

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRecipesRequest;
 use App\Http\Requests\UpdateRecipesRequest;
 use Illuminate\Http\RedirectResponse;
+
 use App\Models\Category;
 use App\Models\Cuisine;
+use App\Models\Reviews;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -73,6 +76,7 @@ class RecipesController extends Controller
             ->findOrFail($id);
         $data['cuisines'] = Cuisine::get();
         $data['categories'] = Category::get();
+        $data['Reviews'] = Reviews::get();
 
         return view('Recipes.show', compact('data'));
     }

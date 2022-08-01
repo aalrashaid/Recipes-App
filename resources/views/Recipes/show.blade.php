@@ -92,7 +92,7 @@
         <h1>Reviews</h1>
         <h3>Share your Comments</h3>
         <div>
-            <form action="{{ route('user.Reviews.store') }}" method="POST">
+            <form action="{{route('user.Reviews.store')}}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
                     <textarea class="form-control mb-3  @error('Comments') is-invalid @enderror" name="Comments" id="Comments"  placeholder="Comments"
@@ -104,6 +104,19 @@
                     <button type="submit" value="Submit" class="btn btn-dark mb-3">Submit</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <div>
+        <div>
+            @foreach ( $data['Reviews'] as $Review)
+                <div>
+                    <article>
+                        {{$Review->comments}}
+                    </article>
+                    <a href="" class="btn btn-dark mb-3" >Reply</a>
+                </div>
+
+            @endforeach
         </div>
     </div>
 @endsection
