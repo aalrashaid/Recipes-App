@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateReviewsRequest;
 use App\Models\Reviews;
 
 use App\Models\Recipe;
+use App\Models\User;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -47,8 +48,11 @@ class ReviewsController extends Controller
      */
     public function store(StoreReviewsRequest $request): RedirectResponse
     {
+
+        // dd();
         //
         DB::transaction(function () use ($request) {
+
             auth()->user()->Reviews()->create($request->except('csrf_token'));
         });
 
@@ -61,17 +65,35 @@ class ReviewsController extends Controller
 
         //dd($Reviews);
 
-        // $Reviews = Reviews::Create(
+        $Reviews = Reviews::Create(
 
-        //     ['comments' => $request->comments]
+            // 'user_id' => auth()->user()->id,
+            // 'recipes_id' => $request->recipes_id,
+            // 'reply_id' => $request->reply_id,
+            // 'user_id' => auth()->user()->id ,
+            // 'comments' => $request->comments,
+        );
+        dd($Reviews);
 
-        // );
-        // dd($Reviews);
-
-        // $Reviews->save();
+        $Reviews->save();
 
         //dd($Reviews);
         //user.
+        return redirect()->route('user.Recipes.index')->with([
+            'class' => 'success',
+            'message' => 'Recipe successfully created'
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreReviewsRequest  $request
+     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
+     */
+    public function replayStore(StoreReviewsRequest $request): RedirectResponse
+    {
         return redirect()->route('user.Recipes.index')->with([
             'class' => 'success',
             'message' => 'Recipe successfully created'

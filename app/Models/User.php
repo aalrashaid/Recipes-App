@@ -73,7 +73,7 @@ class User extends Authenticatable
     }
 
     /**
-     * User model has many recipe model.
+     * User model has many Recipes model.
      *
      * @return HasMany
      */
@@ -87,7 +87,7 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function reviews(): HasMany
+    public function Reviews(): HasMany
     {
         return $this->hasMany(Reviews::class);
     }

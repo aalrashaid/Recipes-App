@@ -5,7 +5,7 @@
 @section('content')
 
     <h1>Show Recipe</h1>
-
+    
     <div>
         <label>Name Recipe:</label>
         {{ $data['model']->title }}
@@ -95,10 +95,10 @@
             <form action="{{route('user.Reviews.store')}}" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
-                    <textarea class="form-control mb-3  @error('Comments') is-invalid @enderror" name="Comments" id="Comments"  placeholder="Comments"
-                        style="height: 100px">{!! old('Comments') !!}</textarea>
-                    <label for="Comments">Comments:</label>
-                    @error('Comments')
+                    <textarea class="form-control mb-3  @error('comments') is-invalid @enderror" name="comments" id="comments"  placeholder="Comments"
+                        style="height: 100px">{!! old('comments') !!}</textarea>
+                    <label for="comments">Comments:</label>
+                    @error('comments')
                         <span class="text-danger">{{$message}}</span>
                     @enderror
                     <button type="submit" value="Submit" class="btn btn-dark mb-3">Submit</button>

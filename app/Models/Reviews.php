@@ -46,7 +46,7 @@ class Reviews extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'recipes_id', 'comments'];
+    protected $fillable = ['user_id', 'recipes_id', 'reply_id', 'comments'];
 
     /**
      * Recipe model has one user model.
@@ -65,6 +65,6 @@ class Reviews extends Model
      */
     public function recipe(): BelongsTo
     {
-        return $this->belongsTo(Recipe::class);
+        return $this->belongsTo(Recipe::class, 'id', 'recipes_id');
     }
 }
