@@ -20,7 +20,30 @@ class CreatePublishedbooksTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->unsignedBigInteger('recipes_id');
+            $table->foreign('recipes_id')
+            ->references('id')
+            ->on('recipes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->string('title');
+            $table->string('slug')->nullable()->unique();
+            $table->string('Author');
+            $table->text('description', 285);
+
+            $table->enum('Share', ['Private', 'Shared', 'Public']);
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
