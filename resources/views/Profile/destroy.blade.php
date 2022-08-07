@@ -20,7 +20,7 @@
     {{ session('status') }}
 </div>
 @endif
-
+{{-- 
 <form action="{{ route('profile.update', $profiles->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
 
@@ -40,7 +40,7 @@
             value="{{ old('slug', $profiles->slug) }}">
         <label for="slug">Slug Name:</label>
     </div> --}}
-    <div class="form-floating mb-3">
+    {{-- <div class="form-floating mb-3">
         <textarea class="form-control" name="bio" id="bio" style="height: 100px">{{ old('bio', $profiles->bio) }}</textarea>
         <label for="bio">Bio:</label>
     </div>
@@ -126,8 +126,8 @@
             </div>
           </div>
         </div>
-      </div>
-</form>
+      </div> --}}
+{{-- </form> --}} 
 
 
 @endsection
