@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +23,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'slug',
         'email',
         'password',
     ];
@@ -41,4 +47,48 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'username'
+            ]
+        ];
+    }
+
+    /**
+     * User model has one profile model.
+     *
+     * @return HasOne
+     */
+    public function profile() : HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * User model has many Recipes model.
+     *
+     * @return HasMany
+     */
+    public function Recipes() : HasMany
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
+    /**
+     * User model has many Reviews model.
+     *
+     * @return HasMany
+     */
+    public function Reviews(): HasMany
+    {
+        return $this->hasMany(Reviews::class);
+    }
 }
